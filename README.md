@@ -1,2 +1,2 @@
 # parently
-Parent powered daycare
+Parent powered after-school care.
