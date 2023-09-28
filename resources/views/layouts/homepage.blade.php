@@ -75,6 +75,12 @@
         <main class="pt-0 pb-5 flex-grow-1 d-flex align-items-center justify-content-center">
             @yield('content')
         </main>
+
+        <footer class="px-4 py-2 w-100">
+            <p class="text-right text-primary">
+                &copy;<?= now()->year; ?>
+            </p>
+        </footer>
     </div>
 </body>
 </html>
