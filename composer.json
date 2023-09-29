@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "jjcsinke/parently",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Share care together",
+    "keywords": ["child-care","out-of-school","day-care","laravel", "vue"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
