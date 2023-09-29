@@ -21,5 +21,6 @@
             </div>
         </div>
     </div>
-        <example-component></example-component>
+    <example-component></example-component>
+    <school-list></school-list>
 @endsection
