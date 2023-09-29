@@ -1,7 +1,5 @@
 <template>
   <div class="card">
-    <div class="card-header">Parent list</div>
-
     <ul class="list-group list-group-flush">
       <li class="list-group-item" v-for="parent in parents">
         {{ parent.name }}

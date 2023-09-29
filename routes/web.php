@@ -20,5 +20,7 @@ Route::get('/', [App\Http\Controllers\Controller::class, 'app'])->name('homepage
 
 
 Route::middleware('verified')->group(function() {
-    Route::get('/portal/{path?}', [App\Http\Controllers\Controller::class, 'app'])->name('portal');
+    Route::get('/portal/{path?}', [App\Http\Controllers\Controller::class, 'app'])
+        ->where('path','.*')
+        ->name('portal');
 });

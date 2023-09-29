@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChildController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use Illuminate\Http\Request;
@@ -26,5 +27,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/menu', [\App\Http\Controllers\Controller::class, 'menu'])->name('menu');
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('parents', ParentController::class);
+    Route::apiResource('children', ChildController::class);
 
 });

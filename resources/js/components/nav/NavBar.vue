@@ -3,7 +3,7 @@
     <div class="container">
 
       <router-link class="navbar-brand" :to="{name: user ? 'portal' : 'home'}">
-        <img height="30" src="/images/logo.svg"
+        <img height="30" src="/images/logo.svg" class="nav-logo"
              alt="Parently">
       </router-link>
 

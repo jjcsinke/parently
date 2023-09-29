@@ -1,0 +1,11 @@
+{
+  "portal" : {
+    "dashboard": {
+      "admin": "Admin Dashboard",
+      "parent": "Parent Dashboard"
+    },
+    "my-children": {
+      "title": "My Children"
+    }
+  }
+}

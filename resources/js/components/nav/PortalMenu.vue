@@ -1,13 +1,12 @@
 <template>
-  <div class="card">
-    <div class="card-header">Menu</div>
+  <nav>
 
-    <ul class="list-group list-group-flush" v-if="menuItems">
-      <li class="list-group-item" v-for="item in menuItems">
-        <router-link :to="{name: item.route}">{{ item.name }}</router-link>
+    <ul class="nav flex-column" v-if="menuItems">
+      <li class="nav-item" v-for="item in menuItems">
+        <router-link class="nav-link" :to="{name: item.route}">{{ item.name }}</router-link>
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <script>

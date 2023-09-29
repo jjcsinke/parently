@@ -25,6 +25,17 @@ class UserSeeder extends Seeder
 
         $admin->markEmailAsVerified();
 
+        $parent = User::firstOrCreate([
+            'email' => 'parent@example.com',
+            'password' => Hash::make(env('ADMIN_PASSWORD')),
+            'type' => UserType::Parent
+        ],[
+            'name' => 'parent'
+        ]);
+        $parent->markEmailAsVerified();
+
+        $parent->children()->saveMany(Child::factory()->count(3)->make());
+
         User::factory()->count(25)
             ->state(['type' => UserType::Parent])
             ->create()

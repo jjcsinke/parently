@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserType;
 use App\Http\Resources\SchoolCollection;
+use App\Http\Resources\SchoolResource;
 use App\Models\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SchoolController extends Controller
 {
@@ -13,7 +16,12 @@ class SchoolController extends Controller
      */
     public function index(): SchoolCollection
     {
-        $schools = School::with('city')->withCount('children')->get();
+        $user = Auth::user();
+        $schools = School::with('city')->withCount('children')
+            ->when($user->type === UserType::Parent,
+                fn($q) => $q->whereHas('children',
+                    fn($c) => $c->whereIn('id', $user->children()->pluck('id')->all())))
+            ->get();
 
         return SchoolCollection::make($schools);
     }
@@ -37,9 +45,9 @@ class SchoolController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(School $school)
+    public function show(School $school): SchoolResource
     {
-        //
+        return SchoolResource::make($school);
     }
 
     /**

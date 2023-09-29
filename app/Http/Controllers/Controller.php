@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserType;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
@@ -21,21 +22,47 @@ class Controller extends BaseController
 
     public function menu(): JsonResponse
     {
+        $menu = match (Auth::user()?->type) {
+            UserType::Admin => $this->adminMenu(),
+            UserType::Parent => $this->parentMenu(),
+            default => []
+        };
         return response()->json([
-            'data' => [
-                [
-                    'name' => __('Schools'),
-                    'route' => 'schools'
-                ],
-                [
-                    'name' => __('Parents'),
-                    'route' => 'parents'
-                ],
-                [
-                    'name' => __('Children'),
-                    'route' => 'children'
-                ]
-            ]
+            'data' => $menu
         ]);
+    }
+
+    private function adminMenu(): array
+    {
+        return [
+            [
+                'name' => __('Schools'),
+                'route' => 'schools'
+            ],
+            [
+                'name' => __('Parents'),
+                'route' => 'parents'
+            ],
+            [
+                'name' => __('Children'),
+                'route' => 'children'
+            ]
+        ];
+
+    }
+
+    private function parentMenu(): array
+    {
+        return [
+            [
+                'name' => __('Schools'),
+                'route' => 'schools'
+            ],
+            [
+                'name' => __('Children'),
+                'route' => 'children'
+            ]
+        ];
+
     }
 }

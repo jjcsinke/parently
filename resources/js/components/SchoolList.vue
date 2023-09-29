@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-    <div class="card-header">School list</div>
-
     <ul class="list-group list-group-flush">
       <li class="list-group-item" v-for="school in schools">
-        {{ school.name }} // {{ school.city.name }} // {{ school.children_count }}
+        <router-link :to="{name: 'schools.single',params: {id: school.id}}">
+          {{ school.name }} // {{ school.city.name }} // {{ school.children_count }}
+        </router-link>
       </li>
     </ul>
   </div>

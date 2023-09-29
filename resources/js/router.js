@@ -9,10 +9,15 @@ const routes = [
     },
     {
         path: '/portal',
-        name: 'portal',
         component: () =>
             import("./views/Portal.vue"),
         children: [
+            {
+                path: '',
+                name: 'portal',
+                component: () =>
+                    import("./views/Portal/Dashboards/Dashboard.vue")
+            },
             {
                 path: 'schools',
                 name: 'schools',
@@ -20,10 +25,28 @@ const routes = [
                     import("./views/Portal/Schools/Index.vue")
             },
             {
+                path: 'schools/:id',
+                name: 'schools.single',
+                component: () =>
+                    import("./views/Portal/Schools/Single.vue")
+            },
+            {
                 path: 'parents',
                 name: 'parents',
                 component: () =>
                     import("./views/Portal/Parents/Index.vue")
+            },
+            {
+                path: 'children',
+                name: 'children',
+                component: () =>
+                    import("./views/Portal/Children/Index.vue")
+            },
+            {
+                path: 'children/:id',
+                name: 'children.single',
+                component: () =>
+                    import("./views/Portal/Children/Single.vue")
             }
         ]
     },

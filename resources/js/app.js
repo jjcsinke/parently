@@ -8,6 +8,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import App from './components/App.vue';
 import router from './router.js';
+import i18n from './i18n.js';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -36,4 +37,5 @@ const app = createApp(App);
  */
 app
     .use(router)
+    .use(i18n)
     .mount('#app');
