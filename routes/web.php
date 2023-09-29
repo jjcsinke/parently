@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('homepage');
-
 Auth::routes(['verify' => true]);
 
+Route::get('/', [App\Http\Controllers\Controller::class, 'app'])->name('homepage');
+
+
 Route::middleware('verified')->group(function() {
-    Route::get('/portal', [App\Http\Controllers\HomeController::class, 'index'])->name('portal');
+    Route::get('/portal/{path?}', [App\Http\Controllers\Controller::class, 'app'])->name('portal');
 });

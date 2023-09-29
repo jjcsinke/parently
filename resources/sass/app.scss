@@ -7,7 +7,18 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .main-image {
   width: 800px;
   max-width: 80vw;
+}
+
+.card {
+  margin-bottom: 1rem;
 }

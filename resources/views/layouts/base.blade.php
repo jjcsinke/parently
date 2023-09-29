@@ -11,12 +11,25 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=roboto" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-<div id="app"></div>
+<div class="d-flex flex-column min-vh-100 w-100 justify-content-center align-items-center">
+    <a class="navbar-brand" href="/">
+        <img height="80" class="mb-5" src="/images/logo.svg"
+             alt="Parently">
+    </a>
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-6 offset-3">
+        @yield('content')
+            </div>
+        </div>
+
+    </main>
+</div>
 </body>
 </html>

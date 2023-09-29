@@ -18,5 +18,8 @@
 </head>
 <body>
 <div id="app"></div>
+<script>
+    var user = {!! json_encode($user) !!};
+</script>
 </body>
 </html>
