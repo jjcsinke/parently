@@ -2,10 +2,10 @@
   <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
     <div class="container">
 
-      <a class="navbar-brand" href="/portal">
+      <router-link class="navbar-brand" :to="{name: user ? 'portal' : 'home'}">
         <img height="30" src="/images/logo.svg"
              alt="Parently">
-      </a>
+      </router-link>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
