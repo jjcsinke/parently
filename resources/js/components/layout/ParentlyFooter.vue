@@ -2,9 +2,10 @@
   <footer class="footer bg-primary-subtle py-4">
     <div class="container my-4">
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 d-flex flex-column justify-content-between">
           <img style="width: 200px; max-width: 80%; height: auto;" src="/images/logo.svg"
                alt="Parently">
+          <span class="text-muted">&copy;2023 // mrpaaj</span>
         </div>
         <div class="col-3" v-for="menu in menus">
           <h3>{{ menu.title }}</h3>
