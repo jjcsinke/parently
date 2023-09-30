@@ -1,12 +1,10 @@
 <template>
-  <nav>
+  <v-navigation-drawer app>
+    <v-list>
+      <v-list-item v-for="item in menuItems" :title="item.name" :exact="item.exact ?? false" :to="{name: item.route}"></v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 
-    <ul class="nav flex-column" v-if="menuItems">
-      <li class="nav-item" v-for="item in menuItems">
-        <router-link class="nav-link" :to="{name: item.route}">{{ item.name }}</router-link>
-      </li>
-    </ul>
-  </nav>
 </template>
 
 <script>

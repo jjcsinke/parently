@@ -36,6 +36,10 @@ class Controller extends BaseController
     {
         return [
             [
+                'name' => __('Dashboard'),
+                'route' => 'portal'
+            ],
+            [
                 'name' => __('Schools'),
                 'route' => 'schools'
             ],
@@ -54,6 +58,11 @@ class Controller extends BaseController
     private function parentMenu(): array
     {
         return [
+            [
+                'name' => __('Dashboard'),
+                'route' => 'portal',
+                'exact' => true
+            ],
             [
                 'name' => __('Schools'),
                 'route' => 'schools'
