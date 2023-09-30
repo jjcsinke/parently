@@ -3,7 +3,7 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item" v-for="child in children">
         <router-link :to="{name: 'children.single',params: {id: child.id}}">
-          {{ child.name }} // {{ child.school.name }}
+          {{ child.name }} // {{ child.school?.name }}
         </router-link>
       </li>
     </ul>

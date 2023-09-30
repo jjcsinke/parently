@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserType;
 use App\Http\Resources\ChildCollection;
 use App\Http\Resources\ChildResource;
 use App\Models\Child;
@@ -12,7 +13,13 @@ class ChildController extends Controller
 {
     public function index(): ChildCollection
     {
-        $children = Auth::user()?->children()->with('school')->get();
+        $user = Auth::user();
+
+        if ($user->type === UserType::Admin) {
+            $children = Child::with('school')->paginate();
+        } else {
+            $children = Auth::user()?->children()->with('school')->get();
+        }
         return ChildCollection::make($children);
     }
 
