@@ -11,7 +11,7 @@
         :items-per-page-options="[{ title: '10', value: 10 }]"
     >
       <template v-slot:item.actions="{item}">
-          <v-btn v-for="action in actions" :to="{name: `${routeBase}.${action}`, params: {id:item.id}}">{{ action }}</v-btn>
+          <v-btn variant="plain" v-for="action in actions" :to="{name: `${routeBase}.${action}`, params: {id:item.id}}" :icon="icons[action]"></v-btn>
       </template>
 
     </v-data-table-server>
@@ -22,7 +22,12 @@ export default {
   props: {
     route: String,
     title: String,
-    actions: Array,
+    actions: {
+      validator(value) {
+        // The value must match one of these strings
+        return ['show', 'edit'].includes(value)
+      }
+    },
     headers: Array
   },
   data() {
@@ -33,7 +38,11 @@ export default {
         per_page: 10,
         total: 0
       },
-      loading: false
+      loading: false,
+      icons: {
+        show: 'mdi-eye',
+        edit: 'mdi-pencil'
+      }
     }
   },
   computed: {

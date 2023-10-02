@@ -1,24 +1,20 @@
 <template>
-  <v-app-bar app flat>
-    <v-container fluid class="d-flex align-center pa-0 pa-md-4">
-      <v-toolbar-title>
-        <router-link class="navbar-brand" :to="{name: user ? 'portal' : 'home'}">
-          <v-img
-              class="mx-2"
+  <v-app-bar flat style="border-bottom: solid 0.5px grey;">
+      <v-app-bar-title>
+        <router-link class="d-block d-flex align-center" :to="{name: user ? 'portal' : 'home'}">
+          <img
               src="/images/logo.svg"
-              max-height="40"
-              max-width="250"
+              height="40"
               alt="Parently"
-              contain
-          ></v-img>
+              style="object-fit:contain;object-position:left center;"
+          >
         </router-link>
-      </v-toolbar-title>
-      <v-spacer/>
+      </v-app-bar-title>
       <template v-if="user">
         <div class="hidden-xs-only">
 
-          <v-btn text :to="{name: 'home'}" exact>Home</v-btn>
-          <v-btn v-if="user" text :to="{name: 'portal'}" exact>Portal</v-btn>
+          <v-btn variant="text" :to="{name: 'home'}" exact>Home</v-btn>
+          <v-btn variant="text" v-if="user" :to="{name: 'portal'}" exact>Portal</v-btn>
 
           <v-btn @click="logout">
             Logout
@@ -108,7 +104,6 @@
       <!--          </template>-->
       <!--        </ul>-->
       <!--      </div>-->
-    </v-container>
   </v-app-bar>
 </template>
 <script>

@@ -39,22 +39,27 @@ class Controller extends BaseController
                 'name' => __('Dashboard'),
                 'route' => 'portal',
                 'exact' => true,
+                'icon' => 'mdi-view-dashboard'
             ],
             [
                 'name' => __('Cities'),
-                'route' => 'cities'
+                'route' => 'cities',
+                'icon' => 'mdi-city'
             ],
             [
                 'name' => __('Schools'),
-                'route' => 'schools'
+                'route' => 'schools',
+                'icon' => 'mdi-school',
             ],
             [
                 'name' => __('Parents'),
-                'route' => 'parents'
+                'route' => 'parents',
+                'icon' => 'mdi-account-child'
             ],
             [
                 'name' => __('Children'),
-                'route' => 'children'
+                'route' => 'children',
+                'icon' => 'mdi-human-child'
             ]
         ];
 
@@ -66,15 +71,18 @@ class Controller extends BaseController
             [
                 'name' => __('Dashboard'),
                 'route' => 'portal',
-                'exact' => true
+                'exact' => true,
+                'icon' => 'mdi-view-dashboard'
             ],
             [
                 'name' => __('Schools'),
-                'route' => 'schools'
+                'route' => 'schools',
+                'icon' => 'mdi-school',
             ],
             [
                 'name' => __('Children'),
-                'route' => 'children'
+                'route' => 'children',
+                'icon' => 'mdi-human-child'
             ]
         ];
 
