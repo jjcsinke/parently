@@ -21,7 +21,7 @@ class SchoolController extends Controller
             ->when($user->type === UserType::Parent,
                 fn($q) => $q->whereHas('children',
                     fn($c) => $c->whereIn('id', $user->children()->pluck('id')->all())))
-            ->get();
+            ->paginate(request('per_page',10));
 
         return SchoolCollection::make($schools);
     }

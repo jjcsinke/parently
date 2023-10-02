@@ -1,5 +1,9 @@
 {
-  "portal" : {
+  "auth": {
+    "logout": "Logout"
+  },
+  "portal": {
+    "title": "Portal",
     "dashboard": {
       "admin": "Admin Dashboard",
       "parent": "Parent Dashboard"
@@ -7,5 +11,31 @@
     "my-children": {
       "title": "My Children"
     }
+  },
+  "table": {
+    "children": {
+      "title": "Children"
+    },
+    "cities": {
+      "title": "Cities"
+    },
+    "parents": {
+      "title": "Parents"
+    },
+    "schools": {
+      "title": "Schools"
+    }
+  },
+  "children": {
+    "show": "Child: {name}"
+  },
+  "cities": {
+    "show": "City: {name}"
+  },
+  "parents": {
+    "show": "Parent: {name}"
+  },
+  "schools": {
+    "show": "School: {name}"
   }
 }

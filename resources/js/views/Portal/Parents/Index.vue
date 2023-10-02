@@ -1,10 +1,28 @@
 <template>
-  <div class="container">
+  <index-page>
 
-    <h1>Parents</h1>
-    <parent-list/>
-  </div>
+  <default-table
+      route="/parents"
+      :headers="headers"
+      :actions="['show']"
+  />
+  </index-page>
 </template>
+
 <script setup>
-import ParentList from "../../../components/ParentList.vue";
+
+const headers = [
+  {
+    title: 'id',
+    value: 'id'
+  },
+  {
+    title: 'Name',
+    value: 'name'
+  },
+  {
+    title: 'Children count',
+    value: 'children_count'
+  }
+]
 </script>

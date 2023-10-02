@@ -37,7 +37,12 @@ class Controller extends BaseController
         return [
             [
                 'name' => __('Dashboard'),
-                'route' => 'portal'
+                'route' => 'portal',
+                'exact' => true,
+            ],
+            [
+                'name' => __('Cities'),
+                'route' => 'cities'
             ],
             [
                 'name' => __('Schools'),

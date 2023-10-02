@@ -1,11 +1,11 @@
 <template>
   <index-page>
 
-    <default-table
-        route="/schools"
-        :headers="headers"
-        :actions="['show']"
-    />
+  <default-table
+      route="/cities"
+      :headers="headers"
+      :actions="['show']"
+  />
   </index-page>
 </template>
 
@@ -14,17 +14,16 @@
 const headers = [
   {
     title: 'id',
-    value: 'id',
-    sortable:
-        false
+    value: 'id'
   },
   {
     title: 'Name',
-    value: 'name',
+    value: 'name'
   },
   {
-    title: 'City',
-    value: 'city.name',
+    title: 'School count',
+    value: 'schools_count'
+
   },
   {
     title: 'Children count',

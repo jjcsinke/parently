@@ -19,6 +19,18 @@ const routes = [
                     import("./views/Portal/Dashboards/Dashboard.vue")
             },
             {
+                path: 'cities',
+                name: 'cities',
+                component: () =>
+                    import("./views/Portal/Cities/Index.vue")
+            },
+            {
+                path: 'cities/:id',
+                name: 'cities.show',
+                component: () =>
+                    import("./views/Portal/Cities/Single.vue")
+            },
+            {
                 path: 'schools',
                 name: 'schools',
                 component: () =>
@@ -26,7 +38,7 @@ const routes = [
             },
             {
                 path: 'schools/:id',
-                name: 'schools.single',
+                name: 'schools.show',
                 component: () =>
                     import("./views/Portal/Schools/Single.vue")
             },
@@ -37,6 +49,12 @@ const routes = [
                     import("./views/Portal/Parents/Index.vue")
             },
             {
+                path: 'parents:id',
+                name: 'parents.show',
+                component: () =>
+                    import("./views/Portal/Parents/Single.vue")
+            },
+            {
                 path: 'children',
                 name: 'children',
                 component: () =>
@@ -44,7 +62,13 @@ const routes = [
             },
             {
                 path: 'children/:id',
-                name: 'children.single',
+                name: 'children.show',
+                component: () =>
+                    import("./views/Portal/Children/Single.vue")
+            },
+            {
+                path: 'children/:id/edit',
+                name: 'children.edit',
                 component: () =>
                     import("./views/Portal/Children/Single.vue")
             }

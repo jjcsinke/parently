@@ -16,9 +16,9 @@ class ChildController extends Controller
         $user = Auth::user();
 
         if ($user->type === UserType::Admin) {
-            $children = Child::with('school')->paginate();
+            $children = Child::with('school')->paginate(request('per_page',10));
         } else {
-            $children = Auth::user()?->children()->with('school')->get();
+            $children = Auth::user()?->children()->with('school')->paginate(request('per_page',10));
         }
         return ChildCollection::make($children);
     }

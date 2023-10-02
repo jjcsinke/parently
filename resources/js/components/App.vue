@@ -2,19 +2,7 @@
   <v-app>
 <!--    <v-layout>-->
 
-      <nav-bar/>
-
-      <portal-menu v-if="$route.path.includes('portal')"/>
-
-      <v-main>
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component"/>
-          </transition>
-        </router-view>
-      </v-main>
-
-      <parently-footer/>
+    <router-view></router-view>
 <!--    </v-layout>-->
   </v-app>
 </template>

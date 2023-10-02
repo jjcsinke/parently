@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\UserType;
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Http\Resources\CityCollection;
+use App\Http\Resources\CityResource;
+use App\Models\City;
 use Illuminate\Http\Request;
 
-class ParentController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): UserCollection
+    public function index(): CityCollection
     {
-        $parents = User::withCount('children')->whereType(UserType::Parent)->paginate(request('per_page',10));
+        $cities = City::withCount('schools','children')->paginate(request('per_page',10));
 
-        return UserCollection::make($parents)->additional(['request' => $request->all()]);
+        return CityCollection::make($cities);
     }
 
     /**
@@ -39,15 +38,15 @@ class ParentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $parent): UserResource
+    public function show(City $city): CityResource
     {
-        return UserResource::make($parent);
+        return CityResource::make($city);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $parent)
+    public function edit(City $city)
     {
         //
     }
@@ -55,7 +54,7 @@ class ParentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $parent)
+    public function update(Request $request, City $city)
     {
         //
     }
@@ -63,7 +62,7 @@ class ParentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $parent)
+    public function destroy(City $city)
     {
         //
     }

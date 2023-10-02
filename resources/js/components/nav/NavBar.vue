@@ -1,6 +1,6 @@
 <template>
   <v-app-bar app flat>
-    <v-container class="d-flex align-center pa-0 pa-md-4">
+    <v-container fluid class="d-flex align-center pa-0 pa-md-4">
       <v-toolbar-title>
         <router-link class="navbar-brand" :to="{name: user ? 'portal' : 'home'}">
           <v-img

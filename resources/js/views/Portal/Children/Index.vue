@@ -1,15 +1,28 @@
 <template>
-  <div class="container">
+  <index-page>
 
-    <h1>Children</h1>
-    <child-list/>
-  </div>
+    <default-table
+        route="/children"
+        :headers="headers"
+        :actions="['show','edit']"
+    />
+  </index-page>
 </template>
-<script>
-import {defineComponent} from "vue";
-import ChildList from "../../../components/ChildList.vue";
 
-export default defineComponent({
-  components: {ChildList}
-})
+<script setup>
+
+const headers = [
+  {
+    title: 'id',
+    value: 'id'
+  },
+  {
+    title: 'Name',
+    value: 'name'
+  },
+  {
+    title: 'School',
+    value: 'school.name'
+  }
+]
 </script>

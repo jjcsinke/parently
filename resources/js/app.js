@@ -5,15 +5,21 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import App from './components/App.vue';
 import router from './router.js';
 import i18n from './i18n.js';
 
 import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
+import {createVuetify} from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import {VDataTable, VDataTableServer} from 'vuetify/labs/VDataTable'
+import '@mdi/font/css/materialdesignicons.css'
+import {aliases, mdi} from 'vuetify/iconsets/mdi'
+import DefaultTable from './components/ui/DefaultTable.vue';
+import IndexPage from "./components/layout/IndexPage.vue";
+import SinglePage from "./components/layout/SinglePage.vue";
 
 const myCustomLightTheme = {
     dark: false,
@@ -31,13 +37,24 @@ const myCustomLightTheme = {
 }
 
 const vuetify = createVuetify({
+    icons: {
+        defaultSet: 'mdi',
+        aliases,
+        sets: {
+            mdi,
+        },
+    },
     theme: {
         defaultTheme: 'myCustomLightTheme',
         themes: {
             myCustomLightTheme,
         }
     },
-    components,
+    components: {
+        ...components,
+        VDataTable,
+        VDataTableServer
+    },
     directives,
 })
 /**
@@ -65,7 +82,9 @@ const app = createApp(App);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-app
+app.component('default-table', DefaultTable)
+    .component('index-page', IndexPage)
+    .component('single-page', SinglePage)
     .use(vuetify)
     .use(router)
     .use(i18n)

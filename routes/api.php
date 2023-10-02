@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChildController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use Illuminate\Http\Request;
@@ -28,5 +29,6 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('parents', ParentController::class);
     Route::apiResource('children', ChildController::class);
+    Route::apiResource('cities', CityController::class);
 
 });
