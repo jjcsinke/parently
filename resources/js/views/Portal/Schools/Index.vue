@@ -50,9 +50,6 @@ export default {
   },
   methods: {
     ...mapActions(useSchoolsStore, ['loadSchools'])
-  },
-  mounted() {
-    this.loadSchools()
   }
 }
 </script>

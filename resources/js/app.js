@@ -14,7 +14,6 @@ import 'vuetify/styles'
 import {createVuetify} from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import {VDataTable, VDataTableServer} from 'vuetify/labs/VDataTable'
 import '@mdi/font/css/materialdesignicons.css'
 import {aliases, mdi} from 'vuetify/iconsets/mdi'
 import AutoLoadTable from './components/ui/AutoLoadTable.vue';
@@ -53,8 +52,6 @@ const vuetify = createVuetify({
     },
     components: {
         ...components,
-        VDataTable,
-        VDataTableServer
     },
     directives,
 })

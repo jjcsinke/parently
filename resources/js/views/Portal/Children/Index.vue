@@ -40,9 +40,6 @@ export default {
   },
   methods: {
     ...mapActions(useChildrenStore, ['loadChildren'])
-  },
-  mounted() {
-    this.loadChildren()
   }
 
 }

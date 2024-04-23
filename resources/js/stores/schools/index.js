@@ -1,4 +1,5 @@
 import {defineStore} from "pinia";
+import {getPagination, responseData, responsePagination, shouldMakeRequest} from "../helpers.js";
 
 export const useSchoolsStore = defineStore('schools', {
     state: () => ({
@@ -6,8 +7,8 @@ export const useSchoolsStore = defineStore('schools', {
         schools: [],
         school: {},
         meta: {
-            page: 1,
-            per_page: 10,
+            page: 0,
+            per_page: 0,
             total: 0,
         }
     }),
@@ -15,17 +16,17 @@ export const useSchoolsStore = defineStore('schools', {
 
     },
     actions: {
-        async loadSchools({page, itemsPerPage} )  {
+        async loadSchools(props)  {
             if (this.loading) return;
-            // if (page === this.meta.page && itemsPerPage === this.meta.per_page) return;
+            const pagination = getPagination(props)
+            if (!shouldMakeRequest(pagination, this.meta)) return;
 
             this.loading = true;
 
-            axios.get('/parents' + (page ? '?' + new URLSearchParams({page, per_page: itemsPerPage}).toString() : '') )
+            axios.get('/schools' + '?' + new URLSearchParams(pagination).toString())
                 .then(response => {
-                    this.schools = response.data.data;
-                    const {current_page, per_page, total} = response.data.meta;
-                    this.meta = {page: current_page, per_page, total};
+                    this.schools = responseData(response);
+                    this.meta = responsePagination(response);
                 })
                 .finally((response) => {
                     this.loading = false;
@@ -35,7 +36,7 @@ export const useSchoolsStore = defineStore('schools', {
             if (this.loading) return;
 
             this.loading = true;
-            axios.get(`/parents/${id}`)
+            axios.get(`/schools/${id}`)
                 .then(response => {
                     this.school = response.data.data;
                 })

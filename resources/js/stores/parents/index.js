@@ -1,4 +1,5 @@
 import {defineStore} from "pinia";
+import {getPagination, responseData, responsePagination, shouldMakeRequest} from "../helpers.js";
 
 export const useParentStore = defineStore('parents', {
     state: () => ({
@@ -13,17 +14,18 @@ export const useParentStore = defineStore('parents', {
     }),
     getters: {},
     actions: {
-        async loadParents({page, itemsPerPage}) {
+        async loadParents(props) {
             if (this.loading) return;
-            // if (!this.parents && page === this.meta.page && itemsPerPage === this.meta.per_page) return;
+            const pagination = getPagination(props);
+
+            if (!this.parents && !shouldMakeRequest(pagination, this.meta)) return;
 
             this.loading = true;
 
-            axios.get('/parents' + (page ? '?' + new URLSearchParams({page, per_page: itemsPerPage}).toString() : ''))
+            axios.get('/parents' + '?' + new URLSearchParams(pagination).toString())
                 .then(response => {
-                    this.parents = response.data.data;
-                    const {current_page, per_page, total} = response.data.meta;
-                    this.meta = {page: current_page, per_page, total};
+                    this.parents = responseData(response);
+                    this.meta = responsePagination(response);
                 })
                 .catch(error => {
                     console.log(error.response.data);

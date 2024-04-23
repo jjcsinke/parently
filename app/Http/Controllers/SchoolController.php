@@ -51,6 +51,8 @@ class SchoolController extends Controller
      */
     public function show(School $school): SchoolResource
     {
+        $school->load('city');
+        $school->loadCount('children');
         return SchoolResource::make($school);
     }
 

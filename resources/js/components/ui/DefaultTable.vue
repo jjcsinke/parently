@@ -58,6 +58,9 @@ export default {
         {title: 'actions', value: 'actions', sortable: false, align: 'end'}
       ] : this.headers
     }
+  },
+  mounted() {
+    this.loadItems()
   }
 }
 </script>
