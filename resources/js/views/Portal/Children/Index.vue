@@ -1,28 +1,49 @@
 <template>
   <index-page>
-
     <default-table
-        route="/children"
+        route="children"
+        :items="children"
         :headers="headers"
-        :actions="['show','edit']"
+        :loading="loading"
+        :meta="meta"
+        :loadItems="loadChildren"
+        :actions="['show']"
     />
   </index-page>
 </template>
 
-<script setup>
+<script>
+import {useChildrenStore} from "../../../stores/children/index.js";
+import DefaultTable from "../../../components/ui/DefaultTable.vue";
+import {mapActions, mapState} from "pinia";
 
-const headers = [
-  {
-    title: 'id',
-    value: 'id'
+export default {
+  name: 'ChildrenIndex',
+  components: {DefaultTable},
+  data() {
+    return {
+      store: 'children',
+      headers: [
+        {
+          title: 'Name',
+          value: 'name'
+        },
+        {
+          title: 'School',
+          value: 'school.name'
+        }
+      ]
+    }
   },
-  {
-    title: 'Name',
-    value: 'name'
+  computed: {
+    ...mapState(useChildrenStore, ['loading','meta','children'])
   },
-  {
-    title: 'School',
-    value: 'school.name'
+  methods: {
+    ...mapActions(useChildrenStore, ['loadChildren'])
+  },
+  mounted() {
+    this.loadChildren()
   }
-]
+
+}
 </script>

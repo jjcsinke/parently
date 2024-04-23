@@ -41,6 +41,7 @@ class ParentController extends Controller
      */
     public function show(User $parent): UserResource
     {
+        $parent->load('children');
         return UserResource::make($parent);
     }
 

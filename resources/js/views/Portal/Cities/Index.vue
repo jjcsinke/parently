@@ -1,7 +1,7 @@
 <template>
   <index-page>
 
-  <default-table
+  <autoload-table
       route="/cities"
       :headers="headers"
       :actions="['show']"
@@ -9,25 +9,36 @@
   </index-page>
 </template>
 
-<script setup>
+<script>
+import AutoloadTable from "../../../components/ui/AutoLoadTable.vue";
 
-const headers = [
-  {
-    title: 'id',
-    value: 'id'
-  },
-  {
-    title: 'Name',
-    value: 'name'
-  },
-  {
-    title: 'School count',
-    value: 'schools_count'
+export default {
+  name: 'CitiesIndex',
+  components: {AutoloadTable},
+  data() {
+    return {
+      headers: [
+        {
+          title: 'id',
+          value: 'id',
+          sortable:
+              false
+        },
+        {
+          title: 'Name',
+          value: 'name',
+        },
+        {
+          title: 'School count',
+          value: 'schools_count'
 
-  },
-  {
-    title: 'Children count',
-    value: 'children_count'
+        },
+        {
+          title: 'Children count',
+          value: 'children_count'
+        }
+      ]
+    }
   }
-]
+}
 </script>

@@ -18,10 +18,14 @@ class SchoolController extends Controller
     {
         $user = Auth::user();
         $schools = School::with('city')->withCount('children')
-            ->when($user->type === UserType::Parent,
-                fn($q) => $q->whereHas('children',
-                    fn($c) => $c->whereIn('id', $user->children()->pluck('id')->all())))
-            ->paginate(request('per_page',10));
+            ->when(
+                $user->type === UserType::Parent,
+                fn($q) => $q->whereHas(
+                    'children',
+                    fn($c) => $c->whereIn('id', $user->children()->pluck('id')->all())
+                )
+            )
+            ->paginate(request('per_page', 10));
 
         return SchoolCollection::make($schools);
     }

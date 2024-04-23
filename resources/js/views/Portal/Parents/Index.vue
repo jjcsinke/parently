@@ -1,28 +1,64 @@
 <template>
   <index-page>
 
-  <default-table
-      route="/parents"
-      :headers="headers"
-      :actions="['show']"
-  />
+    <v-data-table-server
+        v-model:items-per-page="meta.per_page"
+        :items="parents"
+        :items-length="meta.total || 0"
+        :headers="headers"
+        :loading="loading"
+        @update:options="loadParents"
+        :items-per-page-options="[{ title: '10', value: 10 }]"
+    >
+      <template v-slot:item.actions="{item}">
+        <v-btn variant="plain" v-for="action in actions"
+               :to="{name: `parents.${action}`, params: {id:item.id}}"
+               :icon="icons[action]"></v-btn>
+      </template>
+
+    </v-data-table-server>
+    <pre>{{ meta }}</pre>
   </index-page>
 </template>
 
-<script setup>
+<script>
+import {mapActions, mapState} from "pinia";
+import {useParentStore} from "../../../stores/parents/index.js";
 
-const headers = [
-  {
-    title: 'id',
-    value: 'id'
+export default {
+  name: 'ParentsIndex',
+  data() {
+    return {
+      actions: ['show'],
+      icons: {
+        show: 'mdi-eye',
+        edit: 'mdi-pencil'
+      },
+      headers: [
+        {
+          title: 'Name',
+          value: 'name'
+        },
+        {
+          title: 'Children count',
+          value: 'children_count'
+        },
+        {
+          title: 'Actions',
+          align: 'end',
+          value: 'actions',
+        }
+      ]
+    }
   },
-  {
-    title: 'Name',
-    value: 'name'
+  computed: {
+    ...mapState(useParentStore, ['meta','loading','parents'])
   },
-  {
-    title: 'Children count',
-    value: 'children_count'
+  methods: {
+    ...mapActions(useParentStore, ['loadParents'])
+  },
+  mounted() {
+    this.loadParents()
   }
-]
+}
 </script>

@@ -10,8 +10,18 @@ class Child extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function school(): BelongsTo
     {
         return $this->belongsTo(School::class);
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'parent_id');
     }
 }

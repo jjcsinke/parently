@@ -2,33 +2,57 @@
   <index-page>
 
     <default-table
-        route="/schools"
+        route="schools"
+        :items="schools"
         :headers="headers"
+        :loading="loading"
+        :meta="meta"
+        :loadItems="loadSchools"
         :actions="['show']"
     />
   </index-page>
 </template>
 
-<script setup>
+<script>
+import DefaultTable from "../../../components/ui/DefaultTable.vue";
+import {useSchoolsStore} from "../../../stores/schools/index.js";
+import {mapActions, mapState} from "pinia";
 
-const headers = [
-  {
-    title: 'id',
-    value: 'id',
-    sortable:
-        false
+export default {
+  name: 'SchoolsIndex',
+  components: {DefaultTable},
+  data() {
+    return {
+      headers: [
+        {
+          title: 'id',
+          value: 'id',
+          sortable:
+              false
+        },
+        {
+          title: 'Name',
+          value: 'name',
+        },
+        {
+          title: 'City',
+          value: 'city.name',
+        },
+        {
+          title: 'Children count',
+          value: 'children_count'
+        }
+      ]
+    }
   },
-  {
-    title: 'Name',
-    value: 'name',
+  computed: {
+    ...mapState(useSchoolsStore, ['loading','meta','schools'])
   },
-  {
-    title: 'City',
-    value: 'city.name',
+  methods: {
+    ...mapActions(useSchoolsStore, ['loadSchools'])
   },
-  {
-    title: 'Children count',
-    value: 'children_count'
+  mounted() {
+    this.loadSchools()
   }
-]
+}
 </script>

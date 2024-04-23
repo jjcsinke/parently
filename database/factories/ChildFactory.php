@@ -17,7 +17,8 @@ class ChildFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->firstName
+            'name' => fake()->firstName,
+            'date_of_birth' => random_int(0,100) > 25 ? fake()->dateTimeBetween('-18 years', '-1 day') : null,
         ];
     }
 }

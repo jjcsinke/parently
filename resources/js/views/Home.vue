@@ -1,10 +1,10 @@
 <template>
   <v-app-bar color="transparent" flat>
-      <v-app-bar-title>&nbsp;</v-app-bar-title>
+    <v-app-bar-title>&nbsp;</v-app-bar-title>
     <template v-if="user">
-        <v-btn :to="{name: 'portal'}" exact>{{ $t('portal.title') }}</v-btn>
-        <v-btn @click="logout()" exact>{{ $t('auth.logout') }}</v-btn>
-      </template>
+      <v-btn :to="{name: 'portal'}" exact>{{ $t('portal.title') }}</v-btn>
+      <v-btn @click="logout()" exact>{{ $t('auth.logout') }}</v-btn>
+    </template>
   </v-app-bar>
 
   <v-main class="py-16 d-flex flex-column align-center justify-center" style="min-height: 100%;">

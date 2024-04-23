@@ -14,6 +14,12 @@ class ChildResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->uuid,
+            'name' => $this->name,
+            'age' => now()->diff($this->date_of_birth)->y,
+            'date_of_birth' => $this->date_of_birth,
+            'school' => $this->whenLoaded('school', fn () => SchoolResource::make($this->school)),
+        ];
     }
 }

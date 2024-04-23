@@ -11,7 +11,9 @@ export default {
   },
   computed: {
     indexTitle() {
-      return this.title ?? this.$route.name
+      let title = this.title ?? this.$route.name
+      title = title[0].toUpperCase() + title.slice(1)
+      return title;
     }
   }
 }

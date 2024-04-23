@@ -17,9 +17,10 @@ import * as directives from 'vuetify/directives'
 import {VDataTable, VDataTableServer} from 'vuetify/labs/VDataTable'
 import '@mdi/font/css/materialdesignicons.css'
 import {aliases, mdi} from 'vuetify/iconsets/mdi'
-import DefaultTable from './components/ui/DefaultTable.vue';
+import AutoLoadTable from './components/ui/AutoLoadTable.vue';
 import IndexPage from "./components/layout/IndexPage.vue";
 import SinglePage from "./components/layout/SinglePage.vue";
+import {createPinia} from "pinia";
 
 const myCustomLightTheme = {
     dark: false,
@@ -62,7 +63,7 @@ const vuetify = createVuetify({
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
-
+const pinia = createPinia()
 const app = createApp(App);
 
 /**
@@ -82,10 +83,10 @@ const app = createApp(App);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-app.component('default-table', DefaultTable)
-    .component('index-page', IndexPage)
+app.component('index-page', IndexPage)
     .component('single-page', SinglePage)
     .use(vuetify)
     .use(router)
     .use(i18n)
+    .use(pinia)
     .mount('#app');

@@ -49,7 +49,7 @@ const routes = [
                     import("./views/Portal/Parents/Index.vue")
             },
             {
-                path: 'parents:id',
+                path: 'parents/:id',
                 name: 'parents.show',
                 component: () =>
                     import("./views/Portal/Parents/Single.vue")

@@ -3,15 +3,17 @@
     <v-card-title>{{ tableTitle }}</v-card-title>
     <v-data-table-server
         v-model:items-per-page="meta.per_page"
-        :items="tableData"
+        :items="items"
         :items-length="meta.total"
         :headers="tableHeaders"
         :loading="loading"
         @update:options="loadItems"
         :items-per-page-options="[{ title: '10', value: 10 }]"
     >
-      <template v-slot:item.actions="{item}">
-          <v-btn variant="plain" v-for="action in actions" :to="{name: `${routeBase}.${action}`, params: {id:item.id}}" :icon="icons[action]"></v-btn>
+      <template v-if="actions" v-slot:item.actions="{item}">
+        <v-btn variant="plain" v-if="actions" v-for="action in actions"
+               :to="{name: `${routeBase}.${action}`, params: {id:item.id}}"
+               :icon="icons[action]"></v-btn>
       </template>
 
     </v-data-table-server>
@@ -22,22 +24,20 @@ export default {
   props: {
     route: String,
     title: String,
+    items: Array,
+    meta: Object,
+    loadItems: Function,
     actions: {
       validator(value) {
         // The value must match one of these strings
-        return ['show', 'edit'].includes(value)
+        const acceptedActions = ['show', 'edit', 'delete'];
+        return !value || value.filter(v => acceptedActions.includes(v));
       }
     },
     headers: Array
   },
   data() {
     return {
-      tableData: [],
-      meta: {
-        page: 1,
-        per_page: 10,
-        total: 0
-      },
       loading: false,
       icons: {
         show: 'mdi-eye',
@@ -47,34 +47,16 @@ export default {
   },
   computed: {
     tableTitle() {
-      return this.$t(this.title ?? `table.${this.route.replace(/^\//, '')}.title`)
+      return this.$t(this.title ?? `table.${this.routeBase}.title`)
     },
     routeBase() {
-      return this.route.replace(/^\//,'')
+      return this.route.replace(/^\//, '')
     },
     tableHeaders() {
       return this.actions ? [
         ...this.headers,
-        {title: 'actions', value: 'actions', sortable: false}
-      ]  : this.headers
-    }
-  },
-  mounted() {
-    this.loadItems()
-  },
-  methods: {
-    loadItems(options = {}) {
-      options = {
-        page: options.page ?? 1,
-        per_page: options.itemsPerPage ?? 10,
-      }
-      this.loading = true;
-      axios.get(this.route, {params: options})
-          .then(({data}) => {
-            this.tableData = data.data
-            this.meta = data.meta
-            this.loading = false
-          })
+        {title: 'actions', value: 'actions', sortable: false, align: 'end'}
+      ] : this.headers
     }
   }
 }

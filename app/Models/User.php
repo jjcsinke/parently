@@ -14,6 +14,11 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,6 +52,6 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function children(): HasMany {
-        return $this->hasMany(Child::class);
+        return $this->hasMany(Child::class,'parent_id')->orderBy('date_of_birth', 'desc');
     }
 }
