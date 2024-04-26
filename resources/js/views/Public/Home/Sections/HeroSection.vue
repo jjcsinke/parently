@@ -5,7 +5,7 @@
       <h1 class="text-center text-primary text-h3 mb-8">Share care together</h1>
       <div class="py-4 d-flex justify-center">
         <template v-if="!user">
-          <v-btn class="mx-2" size="large" color="primary" href="/login">{{ $t('guest.login') }}</v-btn>
+          <v-btn class="mx-2" size="large" color="primary" :to="{name: 'login'}">{{ $t('guest.login') }}</v-btn>
           <v-btn class="mx-2" size="large" color="warning" href="/register">{{ $t('guest.register') }}</v-btn>
         </template>
         <template v-if="user">
