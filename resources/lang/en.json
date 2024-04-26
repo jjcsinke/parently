@@ -2,6 +2,13 @@
   "auth": {
     "logout": "Logout"
   },
+  "buttons": {
+    "learn-more": "Learn more"
+  },
+  "guest": {
+    "login": "Login",
+    "register": "Sign up"
+  },
   "portal": {
     "title": "Portal",
     "dashboard": {

@@ -21,15 +21,6 @@
           </v-btn>
         </div>
       </template>
-      <template v-else>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
-        </li>
-      </template>
       <v-menu
           left
           bottom

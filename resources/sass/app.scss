@@ -17,7 +17,8 @@
 .main-image {
   width: 800px;
   max-width: 80vw;
-  filter: drop-shadow(3px -7px 4px rgba(255, 255, 255, 0.7)) drop-shadow(1px 1px 1px rgba(255, 255, 255, 0.17)) drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.14)) drop-shadow(-1px 10px 10px rgba(106, 156, 209, 0.3));
+  filter: //drop-shadow(3px -7px 4px rgba(255, 255, 255, 0.7))
+  drop-shadow(6px 6px 8px rgba(255, 255, 255, 0.24));
 }
 
 footer .footer-logo,

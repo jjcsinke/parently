@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', [App\Http\Controllers\Controller::class, 'app'])->name('homepage');
-
-
 Route::middleware('verified')->group(function() {
     Route::get('/portal/{path?}', [App\Http\Controllers\Controller::class, 'app'])
         ->where('path','.*')
         ->name('portal');
 });
+
+Route::get('/{path?}', [App\Http\Controllers\Controller::class, 'app'])->name('homepage')
+    ->where('path', '.*')
+    ->name('homepage');
