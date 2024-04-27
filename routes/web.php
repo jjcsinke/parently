@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['verify' => true]);
-
 Route::middleware('verified')->group(function() {
     Route::get('/portal/{path?}', [App\Http\Controllers\Controller::class, 'app'])
         ->where('path','.*')
