@@ -5,7 +5,7 @@
         <v-img class="flex-grow-1 rounded-lg elevation-10" cover :src="image"></v-img>
       </v-col>
       <v-col cols="12" md="6" class="pa-16" :offset-md="offset">
-          <h2 class="text-h2 mb-8">{{ title }}</h2>
+          <h2 class="text-h3 mb-8">{{ title }}</h2>
           <p class="text-h6">{{ description }}</p>
           <template v-if="to !== undefined">
             <v-btn variant="outlined" class="mt-8" :to="{name: to.name}">{{$t('buttons.learn-more')}} &rarr;</v-btn>

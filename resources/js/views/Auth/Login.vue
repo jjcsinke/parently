@@ -1,18 +1,12 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <v-col cols="12" md="6">
-        <v-card rounded>
+  <v-container class="d-flex justify-center my-16 py-16 align-items-center">
+        <div class="border rounded-lg" style="width:100%;max-width:500px;">
           <v-form>
-            <v-card-title>
-              <h2 class="text-h2">Login</h2>
-            </v-card-title>
-            <v-card-text>
+            <h1 class="text-h4">Login</h1>
               <v-text-field
                 v-model="email"
                 label="Email"
                 outlined
-                dense
                 required
                 type="email"
               ></v-text-field>
@@ -20,18 +14,12 @@
                 v-model="password"
                 label="Password"
                 outlined
-                dense
                 required
                 type="password"
               ></v-text-field>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn color="primary" @click="doLogin">Login</v-btn>
-            </v-card-actions>
+              <v-btn color="primary" variant="filled" @click="doLogin">Login</v-btn>
           </v-form>
-        </v-card>
-      </v-col>
-    </v-row>
+        </div>
   </v-container>
 </template>
 <script>
