@@ -4,9 +4,15 @@
     "login": "Login",
     "register": "Sign up",
     "reset-password": "Reset password",
-    "forgot-password": "Forgot password"
+    "forgot-password": "Forgot password",
+    "register-now": "Don't have an account? Sign up now :)",
+    "did-you-forget": "Did you forget your password? Reset it",
+    "already-registered": "Already have an account? Login now :)",
+    "remember-password": "Remember your password? Login now :)"
   },
   "buttons": {
+    "login": "Login",
+    "register": "Sign up",
     "learn-more": "Learn more"
   },
   "guest": {

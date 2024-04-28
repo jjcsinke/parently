@@ -5,35 +5,37 @@
         <h1 class="text-h4 mb-8">Sign up</h1>
         <v-text-field
             v-model="form.name"
-            label="Name"
+            :label="$t('form.name')"
             variant="outlined"
             required
             type="text"
         ></v-text-field>
         <v-text-field
             v-model="form.email"
-            label="Email"
+            :label="$t('form.email')"
             variant="outlined"
             required
             type="email"
         ></v-text-field>
         <v-text-field
             v-model="form.password"
-            label="Password"
+            :label="$t('form.password')"
             variant="outlined"
             required
             type="password"
         ></v-text-field>
         <v-text-field
             v-model="form.password_confirmation"
-            label="Confirm Password"
+            :label="$t('form.password-confirmation')"
             variant="outlined"
             required
             type="password"
         ></v-text-field>
-        <v-btn color="primary">Sign up</v-btn>
+        <v-btn color="primary">{{ $t('buttons.register') }}</v-btn>
         <v-divider class="mt-8 mb-4"/>
-        <v-btn variant="text" class="ml-n4" :to="{name: 'register'}">Already have an account? Log in :)</v-btn>
+        <router-link class="text-overline text-decoration-none" :to="{name: 'login'}">{{
+            $t('auth.already-registered')
+          }}</router-link>
       </v-form>
     </div>
   </v-container>

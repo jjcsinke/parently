@@ -15,6 +15,10 @@
         <v-btn color="primary" :disabled="loading" :loading="loading">
           {{ $t('form.buttons.send-reset-link') }}
         </v-btn>
+        <v-divider class="mt-8 mb-4"/>
+        <router-link class="text-overline text-decoration-none" :to="{name: 'login'}">
+          {{ $t('auth.remember-password') }}
+        </router-link>
       </v-form>
     </div>
   </v-container>
