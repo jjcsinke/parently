@@ -1,44 +1,32 @@
 <template>
   <v-snackbar
-      v-model="visible"
+      v-model="snackbar.show"
       multi-line
       location="top"
-      :timeout="5000"
-      :color="color"
+      :color="snackbar.color"
       variant="tonal"
   >
-    {{ text }}
+    {{ snackbar.text }}
 
     <template v-slot:actions>
       <v-btn
           variant="text"
           icon="mdi-close"
-          @click="visible = false"
+          @click="closeSnackbar()"
       />
     </template>
   </v-snackbar>
 </template>
 <script>
+import {useAlertsStore} from "../../stores/alerts/index.js";
+import {mapActions, mapState} from "pinia";
+
 export default {
-  props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    color: {
-      type: String,
-      default: undefined
-    },
-    text: {
-      type: String,
-      default: undefined
-    }
+  computed: {
+    ...mapState(useAlertsStore, ['snackbar'])
   },
-  data() {
-    return {
-      visible: this.show,
-    }
-  },
-  emits: ['update:modelValue'],
+  methods: {
+    ...mapActions(useAlertsStore, ['closeSnackbar'])
+  }
 }
 </script>

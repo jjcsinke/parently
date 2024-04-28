@@ -42,25 +42,6 @@ const routes = [
                 component: () =>
                     import("./views/Auth/ResetPassword.vue"),
             },
-            {
-                path: 'verify-email',
-                name: 'verify-email',
-                component: () =>
-                    import("./views/Auth/VerifyEmail.vue"),
-            },
-
-            // {
-            //     path: 'reset-password',
-            //     name: 'reset-password',
-            //     component: () =>
-            //         import("./views/Auth/ResetPassword.vue"),
-            // },
-            // {
-            //     path: 'verify-email',
-            //     name: 'verify-email',
-            //     component: () =>
-            //         import("./views/Auth/VerifyEmail.vue"),
-            // },
         ]
     },
     {

@@ -1,7 +1,7 @@
 <template>
   <v-container class="d-flex justify-center my-16 py-16 align-items-center">
     <div class="border rounded-lg pa-8" style="width:100%;max-width:500px;">
-      <v-form>
+      <v-form @submit.prevent="login(form)">
         <h1 class="text-h4 mb-8">Login</h1>
         <v-text-field
             v-model="form.email"
@@ -17,7 +17,7 @@
             required
             type="password"
         ></v-text-field>
-        <v-btn color="primary" @click="login(form)">Login</v-btn>
+        <v-btn type="submit" color="primary">Login</v-btn>
         <v-divider class="mt-8 mb-4"/>
         <v-btn variant="text" class="ml-n4" :to="{name: 'register'}">Don't have an account? Sign up now :)</v-btn>
         <br>
@@ -25,22 +25,13 @@
         <br>
       </v-form>
     </div>
-    <template v-if="snackbar.show">
-      <default-snackbar
-          :show="snackbar.show"
-          :color="snackbar.color"
-          :text="snackbar.text"
-      />
-    </template>
   </v-container>
 </template>
 <script>
-import {mapActions, mapState} from "pinia";
+import {mapActions} from "pinia";
 import {useAuthStore} from "../../stores/auth/index.js";
-import DefaultSnackbar from "../../components/ui/DefaultSnackbar.vue";
 
 export default {
-  components: {DefaultSnackbar},
   data() {
     return {
       form: {
@@ -48,9 +39,6 @@ export default {
         password: ''
       }
     }
-  },
-  computed: {
-    ...mapState(useAuthStore, ['snackbar'])
   },
   methods: {
     ...mapActions(useAuthStore, ['login']),

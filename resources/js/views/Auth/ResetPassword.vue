@@ -1,7 +1,7 @@
 <template>
   <v-container class="d-flex justify-center my-16 py-16 align-items-center">
     <div class="border rounded-lg pa-8" style="width:100%;max-width:500px;">
-      <v-form>
+      <v-form @submit.prevent="resetPassword()">
         <h1 class="text-h4 mb-8">
           {{ $t('auth.reset-password')}}
         </h1>
@@ -24,21 +24,16 @@
             variant="outlined"
             required
             type="password"/>
-        <v-btn color="primary" @click="resetPassword()">{{ $t('form.buttons.reset-password') }}</v-btn>
+        <v-btn type='submit' color="primary">{{ $t('form.buttons.reset-password') }}</v-btn>
       </v-form>
     </div>
-   <default-snackbar
-    :show="snackbar.show"
-    :color="snackbar.color"
-    :text="snackbar.text"
-   />
   </v-container>
 </template>
 <script>
-import DefaultSnackbar from "../../components/ui/DefaultSnackbar.vue";
+import {mapActions} from "pinia";
+import {useAlertsStore} from "../../stores/alerts/index.js";
 
 export default {
-  components: {DefaultSnackbar},
   data() {
     return {
       loading: false,
@@ -56,22 +51,22 @@ export default {
     }
   },
   methods: {
+    ...mapActions(useAlertsStore, ['showSnackbar']),
     resetPassword() {
       this.loading = true;
       axios.post('/reset-password', this.form, {baseURL: '/'})
           .then((response) => {
-            this.snackbar = {
-              show: true,
+            this.showSnackbar({
               color: 'success',
               text: response.data.message
-            };
+            });
+            this.$router.push({name: 'login'});
           })
           .catch((error) => {
-            this.snackbar = {
-              show: true,
+            this.showSnackbar({
               color: 'error',
               text: error.response.data.message
-            };
+            });
           })
           .finally(() => {
             this.loading = false;

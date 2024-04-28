@@ -1,19 +1,14 @@
 import {defineStore} from "pinia";
+import {useAlertsStore} from "../alerts/index.js";
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         loading: false,
         user: window.user ?? undefined,
-        snackbar: {
-            show: false,
-            color: undefined,
-            text: undefined
-        }
     }),
     getters: {},
     actions: {
         login(form) {
-            this.snackbar.show = false;
             this.loading = true;
             axios.post('/login', form, {baseURL: '/'})
                 .then(({data}) => {
@@ -21,11 +16,10 @@ export const useAuthStore = defineStore('auth', {
                     location.replace('/portal');
                 })
                 .catch((error) => {
-                    this.snackbar = {
-                        show: true,
+                    useAlertsStore().showSnackbar({
                         color: 'error',
                         text: error.response.data.message
-                    }
+                    })
                 })
                 .finally(() => {
                     this.loading = false;

@@ -10,13 +10,15 @@
     </div>
   </v-main>
   <public-footer/>
+  <default-snackbar/>
 </template>
 <script>
 import NavBar from "../components/nav/NavBar.vue";
 import PublicFooter from "../components/nav/PublicFooter.vue";
+import DefaultSnackbar from "../components/ui/DefaultSnackbar.vue";
 
 export default {
   name: 'Portal',
-  components: {PublicFooter, NavBar},
+  components: {DefaultSnackbar, PublicFooter, NavBar},
 }
 </script>
