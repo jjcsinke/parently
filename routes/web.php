@@ -23,3 +23,6 @@ Route::middleware('verified')->group(function() {
 Route::get('/{path?}', [App\Http\Controllers\Controller::class, 'app'])->name('homepage')
     ->where('path', '.*')
     ->name('homepage');
+
+Route::get('/login', [App\Http\Controllers\Controller::class, 'app'])->name('login');
+Route::get('/reset-password', [App\Http\Controllers\Controller::class, 'app'])->name('password.reset');

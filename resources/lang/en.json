@@ -1,6 +1,10 @@
 {
   "auth": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Sign up",
+    "reset-password": "Reset password",
+    "forgot-password": "Forgot password"
   },
   "buttons": {
     "learn-more": "Learn more"
@@ -8,6 +12,17 @@
   "guest": {
     "login": "Login",
     "register": "Sign up"
+  },
+  "form": {
+    "email": "Email",
+    "password": "Password",
+    "password-confirmation": "Password confirmation",
+    "buttons": {
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "send-reset-link": "Send reset link",
+        "reset-password": "Reset password"
+    }
   },
   "portal": {
     "title": "Portal",
