@@ -1,8 +1,10 @@
 <template>
-  <v-container class="d-flex justify-center my-16 py-16 align-items-center">
-    <div class="border rounded-lg pa-8" style="width:100%;max-width:500px;">
+  <auth-form>
+    <template v-slot:title>
+      {{$t('auth.register')}}
+    </template>
+    <template v-slot:form>
       <v-form @submit.prevent="register(form)">
-        <h1 class="text-h4 mb-8">Sign up</h1>
         <v-text-field
             v-model="form.name"
             :label="$t('form.name')"
@@ -32,19 +34,22 @@
             type="password"
         ></v-text-field>
         <v-btn color="primary">{{ $t('buttons.register') }}</v-btn>
-        <v-divider class="mt-8 mb-4"/>
-        <router-link class="text-overline text-decoration-none" :to="{name: 'login'}">{{
-            $t('auth.already-registered')
-          }}</router-link>
       </v-form>
-    </div>
-  </v-container>
+    </template>
+    <template v-slot:links>
+      <router-link class="text-primary text-decoration-none" :to="{name: 'login'}">{{
+          $t('auth.already-registered')
+        }}</router-link>
+    </template>
+  </auth-form>
 </template>
 <script>
 import {mapActions} from "pinia";
 import {useAuthStore} from "../../stores/auth/index.js";
+import AuthForm from "../../components/ui/AuthForm.vue";
 
 export default {
+  components: {AuthForm},
   data() {
     return {
       form: {

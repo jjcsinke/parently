@@ -20,6 +20,7 @@
     "register": "Sign up"
   },
   "form": {
+    "name": "Name",
     "email": "Email",
     "password": "Password",
     "password-confirmation": "Password confirmation",

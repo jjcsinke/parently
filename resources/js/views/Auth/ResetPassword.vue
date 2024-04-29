@@ -1,10 +1,10 @@
 <template>
-  <v-container class="d-flex justify-center my-16 py-16 align-items-center">
-    <div class="border rounded-lg pa-8" style="width:100%;max-width:500px;">
+  <auth-form>
+    <template v-slot:title>
+          {{ $t('auth.reset-password') }}
+    </template>
+    <template v-slot:form>
       <v-form @submit.prevent="resetPassword()">
-        <h1 class="text-h4 mb-8">
-          {{ $t('auth.reset-password')}}
-        </h1>
         <v-text-field
             v-model="form.email"
             :label="$t('form.email')"
@@ -26,14 +26,16 @@
             type="password"/>
         <v-btn type='submit' color="primary">{{ $t('form.buttons.reset-password') }}</v-btn>
       </v-form>
-    </div>
-  </v-container>
+    </template>
+  </auth-form>
 </template>
 <script>
 import {mapActions} from "pinia";
 import {useAlertsStore} from "../../stores/alerts/index.js";
+import AuthForm from "../../components/ui/AuthForm.vue";
 
 export default {
+  components: {AuthForm},
   data() {
     return {
       loading: false,

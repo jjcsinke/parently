@@ -1,10 +1,10 @@
 <template>
-  <v-container class="d-flex justify-center my-16 py-16 align-items-center">
-    <div class="border rounded-lg pa-8" style="width:100%;max-width:500px;">
+  <auth-form>
+    <template v-slot:title>
+      {{ $t('auth.forgot-password') }}
+    </template>
+    <template v-slot:form>
       <v-form @submit.prevent="forgotPassword()">
-        <h1 class="text-h4 mb-8">
-          {{ $t('auth.forgot-password') }}
-        </h1>
         <v-text-field
             v-model="form.email"
             :label="$t('form.email')"
@@ -15,21 +15,23 @@
         <v-btn color="primary" :disabled="loading" :loading="loading">
           {{ $t('form.buttons.send-reset-link') }}
         </v-btn>
-        <v-divider class="mt-8 mb-4"/>
-        <router-link class="text-overline text-decoration-none" :to="{name: 'login'}">
-          {{ $t('auth.remember-password') }}
-        </router-link>
       </v-form>
-    </div>
-  </v-container>
+    </template>
+    <template v-slot:links>
+      <router-link class="text-primary text-decoration-none" :to="{name: 'login'}">
+        {{ $t('auth.remember-password') }}
+      </router-link>
+    </template>
+  </auth-form>
 </template>
 <script>
 import DefaultSnackbar from "../../components/ui/DefaultSnackbar.vue";
 import {useAlertsStore} from "../../stores/alerts/index.js";
 import {mapActions} from "pinia";
+import AuthForm from "../../components/ui/AuthForm.vue";
 
 export default {
-  components: {DefaultSnackbar},
+  components: {AuthForm, DefaultSnackbar},
   data() {
     return {
       loading: false,

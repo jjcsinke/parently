@@ -1,8 +1,10 @@
 <template>
-  <v-container class="d-flex justify-center my-16 py-16 align-items-center">
-    <div class="border rounded-lg pa-8" style="width:100%;max-width:500px;">
+  <auth-form>
+    <template v-slot:title>
+      {{ $t('auth.login') }}
+    </template>
+    <template v-slot:form>
       <v-form @submit.prevent="login(form)">
-        <h1 class="text-h4 mb-8">{{$t('auth.login')}}</h1>
         <v-text-field
             v-model="form.email"
             :label="$t('form.email')"
@@ -18,20 +20,25 @@
             type="password"
         ></v-text-field>
         <v-btn type="submit" color="primary">{{ $t('buttons.login') }}</v-btn>
-        <v-divider class="mt-8 mb-4"/>
-        <router-link class="text-overline text-decoration-none"  :to="{name: 'register'}">{{$t('auth.register-now')}}</router-link>
-        <br>
-        <router-link class="text-overline text-decoration-none"  :to="{name: 'forgot-password'}">{{ $t('auth.did-you-forget') }}</router-link>
-        <br>
       </v-form>
-    </div>
-  </v-container>
+    </template>
+    <template v-slot:links>
+      <router-link class="text-decoration-none text-primary" :to="{name: 'register'}">
+        {{ $t('auth.register-now') }}
+      </router-link>
+      <router-link class="text-decoration-none text-primary" :to="{name: 'forgot-password'}">
+        {{ $t('auth.did-you-forget') }}
+      </router-link>
+    </template>
+  </auth-form>
 </template>
 <script>
 import {mapActions} from "pinia";
 import {useAuthStore} from "../../stores/auth/index.js";
+import AuthForm from "../../components/ui/AuthForm.vue";
 
 export default {
+  components: {AuthForm},
   data() {
     return {
       form: {
