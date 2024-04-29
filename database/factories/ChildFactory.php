@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Interest;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,5 +21,12 @@ class ChildFactory extends Factory
             'name' => fake()->firstName,
             'date_of_birth' => random_int(0,100) > 25 ? fake()->dateTimeBetween('-18 years', '-1 day') : null,
         ];
+    }
+
+    public function withInterests(): self
+    {
+        return $this->afterCreating(function (\App\Models\Child $child) {
+            $child->interests()->sync(Interest::inRandomOrder()->limit(random_int(0, 3))->get());
+        });
     }
 }

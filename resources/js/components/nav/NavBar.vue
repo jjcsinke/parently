@@ -1,7 +1,7 @@
 <template>
   <v-app-bar flat style="border-bottom: solid 0.5px grey;">
       <v-app-bar-title>
-        <router-link class="d-block d-flex align-center" :to="{name: user ? 'portal' : 'home'}">
+        <router-link class="d-block d-flex align-center" :to="{name: user ? 'home' : 'home'}">
           <img
               src="/images/logo.svg"
               height="40"
@@ -99,19 +99,15 @@
 </template>
 <script>
 
+import {useAuthStore} from "@/stores/auth/index.js";
+import {mapActions, mapState} from "pinia";
+
 export default {
-  data() {
-    return {
-      user: window.user
-    }
+  computed: {
+    ...mapState(useAuthStore, ['user'])
   },
   methods: {
-    logout() {
-      axios.post('/logout', '', {baseURL: '/'})
-          .then(() => {
-            location.replace('/');
-          })
-    }
+    ...mapActions(useAuthStore, ['logout'])
   }
 }
 </script>

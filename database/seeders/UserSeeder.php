@@ -34,11 +34,11 @@ class UserSeeder extends Seeder
         ]);
         $parent->markEmailAsVerified();
 
-        $parent->children()->saveMany(Child::factory()->count(3)->make());
+        $parent->children()->sync(Child::factory()->withInterests()->count(3)->create());
 
         User::factory()->count(25)
             ->state(['type' => UserType::Parent])
             ->create()
-            ->each(fn($user) => $user->children()->saveMany(Child::factory()->count(random_int(0, 5))->make()));
+            ->each(fn($user) => $user->children()->sync(Child::factory()->count(random_int(0, 5))->create()));
     }
 }

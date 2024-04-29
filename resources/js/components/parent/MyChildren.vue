@@ -1,13 +1,17 @@
 <template>
-  <h3>{{ $t('portal.my-children.title') }}</h3>
-  <div class="row">
-    <div v-for="child in children" class="col-3">
-      <router-link :to="{name: 'children.single', params: {id: child.id}}">{{ child.name }}</router-link>
-    </div>
-  </div>
+  <v-row>
+    <template v-for="child in children">
+      <v-col cols="12" sm="4">
+        <child-card :child="child" :key="child.id"/>
+      </v-col>
+    </template>
+  </v-row>
 </template>
 <script>
+import ChildCard from "@/components/parent/ChildCard.vue";
+
 export default {
+  components: {ChildCard},
   data() {
     return {
       children: []

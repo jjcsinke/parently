@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserType;
-use App\Http\Resources\ChildCollection;
-use App\Http\Resources\ChildResource;
+use App\Http\Resources\Child\ChildCollection;
+use App\Http\Resources\Child\ChildResource;
 use App\Models\Child;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +24,7 @@ class ChildController extends Controller
 
     public function show(Child $child): ChildResource
     {
-        $child->load('school','parent');
+        $child->load('school','parents','interests');
         return ChildResource::make($child);
     }
 }

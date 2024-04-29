@@ -19,8 +19,13 @@ return new class extends Migration
             $table->uuid()->unique()->default(DB::raw('(UUID())'));
             $table->string('name');
             $table->date('date_of_birth')->nullable();
-            $table->foreignIdFor(User::class,'parent_id')->constrained('users')->cascadeOnDelete();
             $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
+            $table->timestamps();
+        });
+
+        Schema::create('child_user', function (Blueprint $table) {
+            $table->foreignId('child_id')->constrained('children')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

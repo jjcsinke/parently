@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M32,5.12977573 L40.484746,22.321749 L59.4572149,25.0786101 L45.7286075,38.460695 L48.9694921,57.3565021 L32,48.4351121 L15.0305079,57.3565021 L18.2713925,38.460695 L4.54278508,25.0786101 L23.515254,22.321749 L32,5.12977573 Z" id="Star" stroke="#979797" fill="#D8D8D8"></path>
+    </g>
+</svg>

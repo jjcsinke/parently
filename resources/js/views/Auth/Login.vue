@@ -33,9 +33,9 @@
   </auth-form>
 </template>
 <script>
-import {mapActions} from "pinia";
-import {useAuthStore} from "../../stores/auth/index.js";
-import AuthForm from "../../components/ui/AuthForm.vue";
+import {mapActions, mapState} from "pinia";
+import {useAuthStore} from "@/stores/auth/index.js";
+import AuthForm from "@/components/ui/AuthForm.vue";
 
 export default {
   components: {AuthForm},
@@ -47,8 +47,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState(useAuthStore, ['user'])
+  },
   methods: {
     ...mapActions(useAuthStore, ['login']),
-  },
+  }
 }
 </script>

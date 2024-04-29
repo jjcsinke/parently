@@ -33,7 +33,7 @@
             required
             type="password"
         ></v-text-field>
-        <v-btn color="primary">{{ $t('buttons.register') }}</v-btn>
+        <v-btn type="submit" :disabled="loading" :loading="loading" color="primary">{{ $t('buttons.register') }}</v-btn>
       </v-form>
     </template>
     <template v-slot:links>
@@ -44,14 +44,16 @@
   </auth-form>
 </template>
 <script>
+import AuthForm from "@/components/ui/AuthForm.vue";
 import {mapActions} from "pinia";
-import {useAuthStore} from "../../stores/auth/index.js";
-import AuthForm from "../../components/ui/AuthForm.vue";
+import {useAlertsStore} from "@/stores/alerts/index.js";
+import {useAuthStore} from "@/stores/auth/index.js";
 
 export default {
   components: {AuthForm},
   data() {
     return {
+      loading: false,
       form: {
         name: '',
         email: '',
@@ -61,7 +63,28 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useAuthStore, ['register']),
+    ...mapActions(useAlertsStore, ['showSnackbar']),
+    register() {
+      this.loading = true;
+      axios.post('/register', this.form, {baseURL: '/'})
+          .then((response) => {
+            this.showSnackbar({
+              color: 'success',
+              text: this.$t('auth.verification-sent')
+            });
+            this.$router.push({name: 'verify-email'});
+          })
+          .catch((error) => {
+            this.showSnackbar({
+              color: 'error',
+              text: error.response.data.message
+            });
+          })
+          .finally(() => {
+            this.loading = false;
+          })
+    },
+
   }
 }
 </script>

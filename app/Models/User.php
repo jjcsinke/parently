@@ -5,6 +5,7 @@ namespace App\Models;
  use App\Enums\UserType;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  use Illuminate\Database\Eloquent\Relations\HasMany;
  use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -51,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'type' => UserType::class
     ];
 
-    public function children(): HasMany {
-        return $this->hasMany(Child::class,'parent_id')->orderBy('date_of_birth', 'desc');
+    public function children(): BelongsToMany {
+        return $this->belongsToMany(Child::class)->orderBy('date_of_birth', 'desc');
     }
 }

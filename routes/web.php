@@ -26,3 +26,4 @@ Route::get('/{path?}', [App\Http\Controllers\Controller::class, 'app'])->name('h
 
 Route::get('/login', [App\Http\Controllers\Controller::class, 'app'])->name('login');
 Route::get('/reset-password', [App\Http\Controllers\Controller::class, 'app'])->name('password.reset');
+Route::get('/verify-email', [App\Http\Controllers\Controller::class, 'app'])->name('verification.notice');

@@ -5,10 +5,20 @@
     "register": "Sign up",
     "reset-password": "Reset password",
     "forgot-password": "Forgot password",
-    "register-now": "Don't have an account? Sign up now :)",
-    "did-you-forget": "Did you forget your password? Reset it",
-    "already-registered": "Already have an account? Login now :)",
-    "remember-password": "Remember your password? Login now :)"
+    "register-now": "Don't have an account? Sign up now.",
+    "did-you-forget": "Did you forget your password? Reset it.",
+    "verify": {
+      "refresh": "Re-check validation",
+      "title": "Thank you for signing up!",
+      "resend": "Resend verification email",
+      "sent": "A fresh verification link has been sent to your email address.",
+      "check-email": "You signed up using '{email}'. Before you can continue you need to verify your email address. We have sent you an email with a verification link.",
+      "already-did": "Did you already click the link in the email? Refresh the page, or let us check again :)",
+      "didnt-receive": " If you did not receive the email, click the button below to send it again.",
+      "success": "Your email has been verified. You can now continue your journey."
+    },
+    "already-registered": "Already have an account? Login now.",
+    "remember-password": "Remember your password? Login now."
   },
   "buttons": {
     "login": "Login",
@@ -19,6 +29,11 @@
     "login": "Login",
     "register": "Sign up"
   },
+  "sections": {
+    "interests": {
+      "title": "Interests"
+    }
+  },
   "form": {
     "name": "Name",
     "email": "Email",
@@ -28,7 +43,7 @@
       "submit": "Submit",
       "cancel": "Cancel",
       "send-reset-link": "Send reset link",
-        "reset-password": "Reset password"
+      "reset-password": "Reset password"
     }
   },
   "portal": {

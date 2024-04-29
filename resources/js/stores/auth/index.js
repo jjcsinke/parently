@@ -11,11 +11,8 @@ export const useAuthStore = defineStore('auth', {
         login(form) {
             this.loading = true;
             axios.post('/login', form, {baseURL: '/'})
-                .then(({data}) => {
-                    this.user = data;
-                    location.replace('/portal');
-                })
                 .catch((error) => {
+                    console.log(error)
                     useAlertsStore().showSnackbar({
                         color: 'error',
                         text: error.response.data.message
@@ -23,16 +20,22 @@ export const useAuthStore = defineStore('auth', {
                 })
                 .finally(() => {
                     this.loading = false;
+                    this.loadUser()
                 })
         },
-        register(form) {
+        async loadUser() {
             this.loading = true;
-            axios.post('/register', form, {baseURL: '/'})
-                .catch(() => {
+            axios.get('/account')
+                .then(({data}) => {
+                    this.user = data.data;
+                })
+                .catch((error) => {
+                    location.replace('/login');
+                })
+                .finally(() => {
                     this.loading = false;
                 })
         },
-
         logout() {
             axios.post('/logout', '', {baseURL: '/'})
                 .then(() => {

@@ -1,7 +1,10 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import mkcert from 'vite-plugin-mkcert'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineConfig({
     plugins: [
@@ -20,6 +23,11 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
+        }),
+        VueI18nPlugin({
+            /* options */
+            // locale messages resource pre-compile option
+            include:  './resources/lang/**'
         }),
     ],
     resolve: {

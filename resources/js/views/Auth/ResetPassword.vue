@@ -31,19 +31,14 @@
 </template>
 <script>
 import {mapActions} from "pinia";
-import {useAlertsStore} from "../../stores/alerts/index.js";
-import AuthForm from "../../components/ui/AuthForm.vue";
+import {useAlertsStore} from "@/stores/alerts/index.js";
+import AuthForm from "@/components/ui/AuthForm.vue";
 
 export default {
   components: {AuthForm},
   data() {
     return {
       loading: false,
-      snackbar: {
-        show: false,
-        color: undefined,
-        text: undefined,
-      },
       form: {
         token: this.$route.query.token,
         email: this.$route.query.email,

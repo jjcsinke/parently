@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use Illuminate\Http\Request;
@@ -22,10 +24,8 @@ Route::get('/', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-    Route::get('/menu', [\App\Http\Controllers\Controller::class, 'menu'])->name('menu');
+    Route::get('/account', [AccountController::class, 'account'])->name('account');
+    Route::get('/menu', [Controller::class, 'menu'])->name('menu');
     Route::apiResource('schools', SchoolController::class);
     Route::apiResource('parents', ParentController::class);
     Route::apiResource('children', ChildController::class);
