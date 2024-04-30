@@ -1,7 +1,7 @@
 <template>
   <page-section>
     <div class="d-flex flex-column align-center" style="max-width: 1000px; line-height: 2;">
-    <template v-for="part in section.content">
+    <template v-for="part in section">
         <v-col cols="12" md="8" v-html="marked(part)">
         </v-col>
     </template>
@@ -17,11 +17,6 @@ export default {
   methods: {marked},
   props: {
     section: Object
-  },
-  computed: {
-    content() {
-      return marked(this.section.content)
-    }
   },
   components: {PageSection}
 }
