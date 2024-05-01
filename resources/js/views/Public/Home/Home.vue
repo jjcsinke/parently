@@ -34,13 +34,19 @@ export default {
           image: '/images/teacher_sick_sketch.jpg',
           title: 'Share unexpected daycare needs',
           description: 'You never know when you need help. Parently is here to help you find other parents to share daycare together.',
-          to: {name: 'how-it-works'}
+          button: {
+            text: 'buttons.need-care',
+            to: {name: 'how-it-works'}
+          }
         },
         {
           image: '/images/parent_circle_sketch.jpg',
           title: 'How it works',
           description: 'Sign up and tell us about you and your child(ren).\nWhat days do you need help? What days can you provide help? Find other parents at your school to share daycare together.',
-          to: {name: 'how-it-works'}
+          button: {
+            text: 'buttons.provide-care',
+            to: {name: 'how-it-works'}
+          }
         },
       ]
     }

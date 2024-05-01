@@ -8,7 +8,7 @@
           <h2 class="text-h3 mb-8">{{ title }}</h2>
           <p class="text-h6">{{ description }}</p>
           <template v-if="to !== undefined">
-            <v-btn variant="outlined" class="mt-8" :to="{name: to.name}">{{$t('buttons.learn-more')}} &rarr;</v-btn>
+            <v-btn variant="outlined" class="mt-8" :to="{name: to.name}">{{$t(buttonText)}} &rarr;</v-btn>
           </template>
       </v-col>
     </v-row>
@@ -31,7 +31,10 @@ export default {
       return this.section.description
     },
     to() {
-      return this.section.to
+      return this.section.to ?? this.section.button?.to
+    },
+    buttonText() {
+      return this.section.button?.text ?? 'buttons.learn-more'
     },
     image() {
       return this.section.image

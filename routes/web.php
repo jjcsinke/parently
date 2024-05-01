@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('verified')->group(function() {
-    Route::get('/portal/{path?}', [App\Http\Controllers\Controller::class, 'app'])
+    Route::get('/portal/{path?}', [Controller::class, 'app'])
         ->where('path','.*')
         ->name('portal');
 });
 
-Route::get('/{path?}', [App\Http\Controllers\Controller::class, 'app'])->name('homepage')
+Route::get('/{path?}', [Controller::class, 'app'])->name('homepage')
     ->where('path', '.*')
     ->name('homepage');
 
-Route::get('/login', [App\Http\Controllers\Controller::class, 'app'])->name('login');
-Route::get('/reset-password', [App\Http\Controllers\Controller::class, 'app'])->name('password.reset');
-Route::get('/verify-email', [App\Http\Controllers\Controller::class, 'app'])->name('verification.notice');
+Route::get('/login', [Controller::class, 'app'])->name('login');
+Route::get('/reset-password', [Controller::class, 'app'])->name('password.reset');
+Route::get('/verify-email', [Controller::class, 'app'])->name('verification.notice');

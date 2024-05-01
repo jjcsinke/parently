@@ -5,6 +5,7 @@ use App\Http\Controllers\ChildController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PortalController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use Illuminate\Http\Request;
