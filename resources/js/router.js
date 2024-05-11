@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+const ApiContent = () => import('./components/layout/ApiContent.vue');
 
 const routes = [
     {
@@ -11,6 +12,11 @@ const routes = [
                 name: 'home',
                 component: () =>
                     import("./views/Public/Home/Home.vue"),
+            },
+            {
+                path: 'about',
+                name: 'about',
+                component: ApiContent,
             },
             {
                 path: 'how-it-works',

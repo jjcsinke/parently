@@ -1,11 +1,11 @@
 <template>
   <page-section>
-    <div class="d-flex flex-column align-center" style="max-width: 1000px; line-height: 2;">
+    <v-row>
     <template v-for="part in section">
-        <v-col cols="12" md="8" v-html="marked(part)">
+        <v-col cols="12" md="12" v-html="marked(part)">
         </v-col>
     </template>
-      </div>
+      </v-row>
   </page-section>
 </template>
 <script>

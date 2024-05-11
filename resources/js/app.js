@@ -18,7 +18,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import {aliases, mdi} from 'vuetify/iconsets/mdi'
 import AutoLoadTable from './components/ui/AutoLoadTable.vue';
 import IndexPage from "./components/layout/IndexPage.vue";
-import SinglePage from "./components/layout/SinglePage.vue";
+import SinglePage from "./components/layout/home/SingleHomePage.vue";
 import {createPinia} from "pinia";
 
 const myCustomLightTheme = {

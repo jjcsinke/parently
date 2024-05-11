@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="primary-lighten">
+  <v-footer color="primary">
     <v-container>
       <v-row>
 

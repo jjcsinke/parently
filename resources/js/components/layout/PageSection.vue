@@ -1,5 +1,5 @@
 <template>
-  <v-container class="my-16 py-16">
+  <v-container class="my-12 py-12">
     <slot></slot>
   </v-container>
 </template>

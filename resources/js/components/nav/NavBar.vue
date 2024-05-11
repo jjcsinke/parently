@@ -10,6 +10,11 @@
           >
         </router-link>
       </v-app-bar-title>
+      <template v-if="!inPortal">
+        <v-btn variant="text" :to="{name: 'home'}" exact>Home</v-btn>
+        <v-btn variant="text" :to="{name: 'about'}" exact>About</v-btn>
+        <v-btn variant="text" :to="{name: 'how-it-works'}">How It Works</v-btn>
+      </template>
       <template v-if="user">
         <div class="hidden-xs-only">
 
@@ -104,7 +109,10 @@ import {mapActions, mapState} from "pinia";
 
 export default {
   computed: {
-    ...mapState(useAuthStore, ['user'])
+    ...mapState(useAuthStore, ['user']),
+    inPortal() {
+      return this.$route.path.includes('portal')
+    },
   },
   methods: {
     ...mapActions(useAuthStore, ['logout'])

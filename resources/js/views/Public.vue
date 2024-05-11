@@ -1,6 +1,6 @@
 <template>
   <nav-bar/>
-  <v-main class="d-flex flex-column">
+  <v-main class="d-flex flex-column flex-grow-1">
     <div class="flex-grow-1">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">

@@ -58,6 +58,9 @@
       "title": "My Children"
     }
   },
+  "page": {
+    "about": "About Parently"
+  },
   "table": {
     "children": {
       "title": "Children"
