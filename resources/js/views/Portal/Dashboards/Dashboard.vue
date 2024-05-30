@@ -9,13 +9,13 @@
 <script>
 import AdminDashboard from "./AdminDashboard.vue";
 import ParentDashboard from "./ParentDashboard.vue";
+import {mapState} from "pinia";
+import {useAuthStore} from "@/stores/auth/index.js";
 
 export default {
   components: {ParentDashboard, AdminDashboard},
-  data() {
-    return {
-      user: window.user ?? false
-    }
+  computed:{
+    ...mapState(useAuthStore, ['user'])
   }
 }
 </script>

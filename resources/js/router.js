@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+
 const ApiContent = () => import('./components/layout/ApiContent.vue');
 
 const routes = [
@@ -63,9 +64,15 @@ const routes = [
         children: [
             {
                 path: '',
-                name: 'portal',
+                name: 'dashboard',
                 component: () =>
                     import("./views/Portal/Dashboards/Dashboard.vue")
+            },
+            {
+                path: 'account',
+                name: 'account',
+                component: () =>
+                    import("./views/Portal/Account/Index.vue")
             },
             {
                 path: 'cities',
@@ -105,21 +112,32 @@ const routes = [
             },
             {
                 path: 'children',
-                name: 'children',
-                component: () =>
-                    import("./views/Portal/Children/Index.vue")
-            },
-            {
-                path: 'children/:id',
-                name: 'children.show',
-                component: () =>
-                    import("./views/Portal/Children/Single.vue")
-            },
-            {
-                path: 'children/:id/edit',
-                name: 'children.edit',
-                component: () =>
-                    import("./views/Portal/Children/Single.vue")
+                children: [
+                    {
+                        path: '',
+                        name: 'children',
+                        component: () =>
+                            import("./views/Portal/Children/Index.vue")
+                    },
+                    {
+                        path: ':id',
+                        name: 'children.show',
+                        component: () =>
+                            import("./views/Portal/Children/Single.vue")
+                    },
+                    {
+                        path: ':id/edit',
+                        name: 'children.edit',
+                        component: () =>
+                            import("./views/Portal/Children/Single.vue")
+                    },
+                    {
+                        path: 'create',
+                        name: 'children.create',
+                        component: () =>
+                            import("./views/Portal/Children/Create.vue")
+                    }
+                ]
             }
         ]
     },

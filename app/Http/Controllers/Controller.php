@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests;
+    use ValidatesRequests;
 
     public function app()
     {
@@ -36,51 +37,42 @@ class Controller extends BaseController
     {
         return [
             [
-                'name' => __('Dashboard'),
-                'route' => 'portal',
+                'route' => 'dashboard',
                 'exact' => true,
                 'icon' => 'mdi-view-dashboard'
             ],
             [
-                'name' => __('Cities'),
                 'route' => 'cities',
                 'icon' => 'mdi-city'
             ],
             [
-                'name' => __('Schools'),
                 'route' => 'schools',
                 'icon' => 'mdi-school',
             ],
             [
-                'name' => __('Parents'),
                 'route' => 'parents',
                 'icon' => 'mdi-account-child'
             ],
             [
-                'name' => __('Children'),
                 'route' => 'children',
                 'icon' => 'mdi-human-child'
             ]
         ];
-
     }
 
     private function parentMenu(): array
     {
         return [
             [
-                'name' => __('Dashboard'),
-                'route' => 'portal',
+                'route' => 'dashboard',
                 'exact' => true,
                 'icon' => 'mdi-view-dashboard'
             ],
             [
-                'name' => __('Schools'),
                 'route' => 'schools',
                 'icon' => 'mdi-school',
             ],
             [
-                'name' => __('Children'),
                 'route' => 'children',
                 'icon' => 'mdi-human-child'
             ]

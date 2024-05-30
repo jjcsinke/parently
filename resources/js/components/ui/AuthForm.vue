@@ -31,13 +31,13 @@ export default {
   },
   mounted() {
     if (this.shouldRedirect) {
-      this.$router.push({name: 'portal'})
+      this.$router.push({name: 'dashboard'})
     }
   },
   watch: {
     user() {
       if (this.shouldRedirect) {
-        this.$router.push({name: 'portal'})
+        this.$router.push({name: 'dashboard'})
       }
     }
   }

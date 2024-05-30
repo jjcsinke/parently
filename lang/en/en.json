@@ -21,14 +21,15 @@
     "remember-password": "Remember your password? Login now."
   },
   "buttons": {
-    "login": "Login",
+    "login": "Sign in",
+    "logout": "Sign out",
     "register": "Sign up",
     "learn-more": "Learn more",
     "need-care": "How it works: As a parent in need",
     "provide-care": "How it works: As a care-parent"
   },
   "guest": {
-    "login": "Login",
+    "login": "Sign in",
     "register": "Sign up"
   },
   "sections": {
@@ -55,7 +56,15 @@
       "parent": "Parent Dashboard"
     },
     "my-children": {
-      "title": "My Children"
+      "title": "My Children",
+      "add": "Add a child"
+    },
+    "account": {
+      "title": "Account",
+      "info": "Account information",
+      "name": "Name",
+      "email": "Email",
+      "type": "Account type"
     }
   },
   "page": {
@@ -86,5 +95,19 @@
   },
   "schools": {
     "show": "School: {name}"
+  },
+  "nav": {
+    "about": "About",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "login": "Sign in",
+    "schools": "Schools",
+    "cities": "Cities",
+    "parents": "Parents",
+    "children": "Children",
+    "logout": "Sign out",
+    "register": "Sign up",
+    "portal": "Portal"
   }
 }

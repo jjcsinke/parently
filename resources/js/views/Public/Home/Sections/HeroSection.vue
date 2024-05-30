@@ -9,7 +9,7 @@
           <v-btn class="mx-2" size="large" color="warning" href="/register">{{ $t('guest.register') }}</v-btn>
         </template>
         <template v-if="user">
-          <v-btn class="mx-2" size="large" color="warning" :to="{name: 'portal'}">{{ $t('portal.title') }}</v-btn>
+          <v-btn class="mx-2" size="large" color="warning" :to="{name: 'dashboard'}">{{ $t('portal.title') }}</v-btn>
         </template>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <page-section>
     <v-row>
       <v-col cols="12" md="4" :order-md="order" class="f-flex align-stretch">
-        <v-img class="flex-grow-1 rounded-lg elevation-10" cover :src="image"></v-img>
+        <v-img class="flex-grow-1 rounded-lg elevation-0" cover :src="image"></v-img>
       </v-col>
       <v-col cols="12" md="6" class="pa-16" :offset-md="offset">
           <h2 class="text-h3 mb-8">{{ title }}</h2>

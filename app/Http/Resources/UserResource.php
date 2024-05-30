@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\UserType;
 use App\Http\Resources\Child\ChildResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -19,7 +20,7 @@ class UserResource extends JsonResource
             'id' => $this->uuid,
             'name' => $this->name,
             'email' => $this->email,
-            'type' => $this->type,
+            'type' => $this->type ?? UserType::Parent,
             'children_count' => $this->whenCounted('children'),
             'children' => $this->whenLoaded('children', function () {
                 return $this->children->sortByDesc('date_of_birth')->map(function ($child) {

@@ -11,6 +11,12 @@ class Child extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'date_of_birth',
+        'school_id',
+    ];
+
     public function getRouteKeyName()
     {
         return 'uuid';

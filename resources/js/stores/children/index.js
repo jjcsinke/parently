@@ -44,5 +44,16 @@ export const useChildrenStore = defineStore('children', {
                     this.loading = false;
                 });
         },
+        async addChild(payload) {
+            if (this.loading) return;
+            this.loading = true;
+            axios.post('/children', payload)
+                .then(response => {
+                    this.children.unshift(response.data.data);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        },
     },
 })

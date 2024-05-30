@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserType;
+use App\Http\Requests\Children\Create;
 use App\Http\Resources\Child\ChildCollection;
 use App\Http\Resources\Child\ChildResource;
 use App\Models\Child;
@@ -25,6 +26,19 @@ class ChildController extends Controller
     public function show(Child $child): ChildResource
     {
         $child->load('school','parents','interests');
+        return ChildResource::make($child);
+    }
+
+    public function store(Create $request): ChildResource
+    {
+        $child = Child::make($request->validated());
+        $child->save();
+
+        if ($request->validated('parent_ids')) {
+            $child->parents()->sync($request->validated('parent_ids'));
+        }
+
+        $child->refresh();
         return ChildResource::make($child);
     }
 }
