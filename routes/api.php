@@ -25,9 +25,11 @@ Route::get('/', function (Request $request) {
     return ['message' => __('Hi there!')];
 });
 
-Route::get('/page/{page}', [HomeController::class, 'getPageContent'])
-    ->where('page', '.*')
-    ->name('page.show');
+Route::middleware('cache.headers:public;max_age=3600;etag')->group(function() {
+    Route::get('/page/{page}', [HomeController::class, 'getPageContent'])
+        ->where('page', '.*')
+        ->name('page.show');
+});
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/account', [AccountController::class, 'account'])->name('account');

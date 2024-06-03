@@ -15,6 +15,7 @@
     "guzzlehttp/guzzle": "^7.2",
     "laravel/fortify": "*",
     "laravel/framework": "^11.0",
+    "laravel/pulse": "^1.2",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.8",
     "nesbot/carbon": "3.0"

@@ -1,23 +1,26 @@
 <template>
   <page-section>
-    <v-row>
     <template v-for="part in section">
-        <v-col cols="12" md="12" v-html="marked(part)">
-        </v-col>
+      <p v-html="marked(part)"></p>
     </template>
-      </v-row>
   </page-section>
 </template>
 <script>
-import {marked} from "marked";
-import PageSection from "../../../../components/layout/PageSection.vue";
+import { marked } from "marked";
+import PageSection from "@/components/layout/sections/PageSection.vue";
 
 export default {
-  name: 'TextSection',
-  methods: {marked},
+  name: "TextSection",
+  methods: { marked },
   props: {
-    section: Object
+    section: Object,
   },
-  components: {PageSection}
-}
+  components: { PageSection },
+};
 </script>
+<style scoped>
+p {
+  max-width: 800px;
+  margin: 2rem 0;
+}
+</style>

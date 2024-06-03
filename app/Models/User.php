@@ -56,4 +56,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function children(): BelongsToMany {
         return $this->belongsToMany(Child::class)->orderBy('date_of_birth', 'desc');
     }
+
+    public function isAdmin(): bool {
+        return $this->type === UserType::Admin;
+    }
 }

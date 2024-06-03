@@ -1,43 +1,38 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-btn color="primary" class="" @click="loadPage('/page/how-it-works')">About Parently</v-btn>
-      </v-col>
-      <v-col>
-        <v-btn color="primary" class="" @click="loadPage('/page/how-it-works/for-a-care-seeking-parent')">Parent in need
-        </v-btn>
-      </v-col>
-      <v-col>
-        <v-btn color="primary" class="" @click="loadPage('/page/how-it-works/as-a-day-care-parent')">Daycare-parent
-        </v-btn>
-      </v-col>
-    </v-row>
-    <text-section :section="section"/>
-  </v-container>
+  <template v-for="pageSection in page.sections">
+    <template v-if="pageSection.type === 'TabbedSection'">
+      <tabbed-section :section="pageSection" :parent="parentPage" />
+    </template>
+    <template v-if="pageSection.type === 'HeroSection'">
+      <hero-section :section="pageSection" />
+    </template>
+  </template>
+
+  <pre>{{ page }}</pre>
 </template>
 <script>
-import HeroSection from "../Home/Sections/HeroSection.vue";
-import TextSection from "../Home/Sections/TextSection.vue";
+import HeroSection from "@/components/layout/sections/HeroSection.vue";
+import TextSection from "@/views/Public/Home/Sections/TextSection.vue";
+import { mapActions, mapState } from "pinia";
+import { useContentStore } from "@/stores/content/index.js";
+import TabbedSection from "@/components/layout/sections/TabbedSection.vue";
 
 export default {
-  name: 'HowItWorks',
-  components: {TextSection, HeroSection},
+  name: "HowItWorks",
+  components: { TabbedSection, TextSection, HeroSection },
   data() {
     return {
-      section: {}
-    }
+      parentPage: "how-it-works",
+    };
+  },
+  computed: {
+    ...mapState(useContentStore, ["page", "pages"]),
   },
   methods: {
-    loadPage(page) {
-      axios.get(page || '/page/how-it-works')
-          .then((response) => {
-            this.section = response.data.data
-          })
-    }
+    ...mapActions(useContentStore, ["loadPage"]),
   },
   mounted() {
-    this.loadPage()
-  }
-}
+    this.loadPage(this.parentPage);
+  },
+};
 </script>

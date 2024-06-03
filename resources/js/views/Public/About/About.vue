@@ -1,13 +1,12 @@
 <template>
-  <v-container>
     <text-section :section="section"/>
-  </v-container>
 </template>
 <script>
 import TextSection from "../Home/Sections/TextSection.vue";
+import SinglePage from "@/components/layout/home/SingleHomePage.vue";
 export default {
   name: 'About',
-  components: {TextSection},
+  components: {SinglePage, TextSection},
   data() {
     return {
       section: {}

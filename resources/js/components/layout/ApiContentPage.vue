@@ -7,7 +7,7 @@
 import SinglePage from "@/components/layout/home/SingleHomePage.vue";
 import TextSection from "@/views/Public/Home/Sections/TextSection.vue";
 export default {
-  name: 'ApiContent',
+  name: 'ApiContentPage',
   components: {TextSection, SinglePage},
   data() {
     return {
