@@ -9,7 +9,7 @@
         {{ tab.title }}
       </v-tab>
     </v-tabs>
-    <text-section :section="content" />
+    <text-section v-if="content" :section="content" />
   </page-section>
 </template>
 <script>
@@ -18,16 +18,18 @@ import PageSection from "@/components/layout/sections/PageSection.vue";
 import { mapActions, mapState } from "pinia";
 import { useContentStore } from "@/stores/content/index.js";
 import TextSection from "@/components/layout/sections/TextSection.vue";
+import DebugSection from "@/components/layout/sections/DebugSection.vue";
 export default {
   name: "TabbedSection",
   props: {
     section: Object,
     parent: String,
   },
-  components: { TextSection, PageSection },
+  components: { DebugSection, TextSection, PageSection },
   data() {
     return {
-      selectedTab: undefined,
+      selectedTab:
+        this.$route.hash.replace("#", "") || this.section.tabs[0].page,
     };
   },
   computed: {
@@ -44,6 +46,10 @@ export default {
   methods: {
     marked,
     ...mapActions(useContentStore, ["loadPage", "clearPage"]),
+  },
+  mounted() {
+    console.log(this.selectedTab, this.parent);
+    this.loadPage(this.selectedTab, this.parent);
   },
   watch: {
     selectedTab(val) {

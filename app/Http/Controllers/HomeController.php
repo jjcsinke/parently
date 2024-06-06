@@ -20,7 +20,9 @@ class HomeController extends Controller
         });
 
         return response()->json([
-            'data' => $data
+            'data' => $data,
+            'debug' => ['page' => $page]
         ]);
+
     }
 }

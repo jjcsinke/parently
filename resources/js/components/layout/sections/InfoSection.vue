@@ -14,7 +14,10 @@
         <h2 class="text-h3 mb-8">{{ title }}</h2>
         <p class="text-h6">{{ description }}</p>
         <template v-if="to !== undefined">
-          <v-btn variant="outlined" class="mt-8" :to="{ name: to.name }"
+          <v-btn
+            variant="outlined"
+            class="mt-8"
+            :to="{ name: to.name, hash: to.hash ? '#' + to.hash : undefined }"
             >{{ $t(buttonText) }} &rarr;</v-btn
           >
         </template>

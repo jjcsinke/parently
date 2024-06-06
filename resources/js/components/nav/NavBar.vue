@@ -18,70 +18,18 @@
       <template v-if="!inPortal">
         <v-btn :to="{ name: 'home' }" exact>{{ $t("nav.home") }}</v-btn>
         <v-btn :to="{ name: 'about' }" exact>{{ $t("nav.about") }}</v-btn>
-        <v-btn :to="{ name: 'how-it-works' }" exact>{{
-          $t("nav.how-it-works")
-        }}</v-btn>
-        <v-btn v-if="user" :to="{ name: 'dashboard' }">{{
-          $t("nav.portal")
-        }}</v-btn>
-        <v-btn v-if="!user" :to="{ name: 'login' }">{{
-          $t("nav.login")
-        }}</v-btn>
+        <v-btn v-if="user" :to="{ name: 'dashboard' }"
+          >{{ $t("nav.portal") }}
+        </v-btn>
       </template>
     </v-toolbar-items>
-
-    <!--      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"-->
-    <!--              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">-->
-    <!--        <span class="navbar-toggler-icon"></span>-->
-    <!--      </button>-->
-
-    <!--      <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-    <!--        &lt;!&ndash; Left Side Of Navbar &ndash;&gt;-->
-    <!--        <ul class="navbar-nav me-auto">-->
-
-    <!--        </ul>-->
-
-    <!--        &lt;!&ndash; Right Side Of Navbar &ndash;&gt;-->
-    <!--        <ul class="navbar-nav ms-auto">-->
-    <!--          &lt;!&ndash; Authentication Links &ndash;&gt;-->
-    <!--          <template v-if="user">-->
-    <!--            <li class="nav-item">-->
-    <!--              <router-link class="nav-link" :to="{name: 'home'}">Home</router-link>-->
-    <!--            </li>-->
-
-    <!--            <li class="nav-item">-->
-    <!--              <router-link class="nav-link" :to="{name: 'portal'}">Portal</router-link>-->
-    <!--            </li>-->
-
-    <!--            <li class="nav-item dropdown">-->
-    <!--              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
-    <!--                 aria-haspopup="true" aria-expanded="false">-->
-    <!--                {{ user.name }}-->
-    <!--              </a>-->
-    <!--              <ul class="dropdown-menu dropdown-menu-end">-->
-    <!--                <li>-->
-
-    <!--                  <button class="dropdown-item" @click="logout">-->
-    <!--                    Logout-->
-    <!--                  </button>-->
-    <!--                </li>-->
-    <!--              </ul>-->
-    <!--            </li>-->
-
-    <!--          </template>-->
-
-    <!--          <template v-else>-->
-
-    <!--            <li class="nav-item">-->
-    <!--              <a class="nav-link" href="/login">Login</a>-->
-    <!--            </li>-->
-    <!--            <li class="nav-item">-->
-    <!--              <a class="nav-link" href="/register">Register</a>-->
-    <!--            </li>-->
-
-    <!--          </template>-->
-    <!--        </ul>-->
-    <!--      </div>-->
+    <v-btn
+      variant="elevated"
+      color="warning"
+      v-if="!user"
+      :to="{ name: 'login' }"
+      >{{ $t("nav.login") }}
+    </v-btn>
   </v-app-bar>
 </template>
 <script>

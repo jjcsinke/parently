@@ -35,6 +35,8 @@ export const useContentStore = defineStore("content", {
         return;
       }
 
+      console.log(page, pageSlug, parent);
+
       this.loading.push(page);
 
       axios

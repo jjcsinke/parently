@@ -1,19 +1,14 @@
-const ApiContentPage = () => import("@/components/layout/ApiContentPage.vue");
 const DefaultPage = () => import("@/views/Public/Pages/Default.vue");
+
 export default [
   {
     path: "",
     name: "home",
-    component: () => import("@/views/Public/Home/Home.vue"),
+    component: DefaultPage,
   },
   {
     path: "about",
     name: "about",
-    component: DefaultPage,
-  },
-  {
-    path: "how-it-works",
-    name: "how-it-works",
     component: DefaultPage,
   },
   {
