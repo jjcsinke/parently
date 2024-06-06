@@ -10,7 +10,6 @@
       </v-tab>
     </v-tabs>
     <text-section :section="content" />
-    {{ selectedTab || "n/a" }}
   </page-section>
 </template>
 <script>
@@ -18,7 +17,7 @@ import { marked } from "marked";
 import PageSection from "@/components/layout/sections/PageSection.vue";
 import { mapActions, mapState } from "pinia";
 import { useContentStore } from "@/stores/content/index.js";
-import TextSection from "@/views/Public/Home/Sections/TextSection.vue";
+import TextSection from "@/components/layout/sections/TextSection.vue";
 export default {
   name: "TabbedSection",
   props: {

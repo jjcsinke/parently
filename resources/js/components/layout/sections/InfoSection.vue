@@ -4,7 +4,9 @@
       <v-col cols="12" md="4" :order-md="order" class="f-flex align-stretch">
         <v-img
           class="flex-grow-1 rounded-lg elevation-0"
-          cover
+          contain
+          max-height="300px"
+          :aspect-ratio="1"
           :src="image"
         ></v-img>
       </v-col>
@@ -21,7 +23,7 @@
   </page-section>
 </template>
 <script>
-import PageSection from "../../../../components/layout/sections/PageSection.vue";
+import PageSection from "./PageSection.vue";
 
 export default {
   name: "InfoSection",

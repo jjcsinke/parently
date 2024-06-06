@@ -1,6 +1,6 @@
 <template>
   <page-section>
-    <template v-for="part in section">
+    <template v-for="part in section.content">
       <p v-html="marked(part)"></p>
     </template>
   </page-section>

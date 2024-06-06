@@ -1,27 +1,33 @@
 <template>
-  <v-container class="ma-0 pa-0" fluid>
-    <div class="bg-primary text-white">
-      <v-container class="pt-16 pb-12">
-        <h1 class="text-h3">{{ ucTitle }}</h1>
-      </v-container>
+  <v-parallax src="/images/parently_light.jpg" color="primary" height="600px">
+    <div class="py-16 d-flex flex-column align-center justify-center flex-grow-1 h-100">
+      <img class="main-image pa-4" alt="Parently" src="/images/logo.svg">
+      <h1 class="text-center text-primary text-h3 mb-8">Share care together</h1>
+      <div class="py-4 d-flex justify-center">
+        <template v-if="!user">
+          <v-btn class="mx-2" size="large" color="primary" :to="{name: 'login'}">{{ $t('guest.login') }}</v-btn>
+          <v-btn class="mx-2" size="large" color="warning" href="/register">{{ $t('guest.register') }}</v-btn>
+        </template>
+        <template v-if="user">
+          <v-btn class="mx-2" size="large" color="warning" :to="{name: 'dashboard'}">{{ $t('portal.title') }}</v-btn>
+        </template>
+      </div>
     </div>
-    <slot></slot>
-  </v-container>
+  </v-parallax>
+
 </template>
 <script>
-import { computed } from "vue";
+
+import {mapActions, mapState} from "pinia";
+import {useAuthStore} from "@/stores/auth/index.js";
 
 export default {
-  props: {
-    section: Object,
-  },
+  name: 'HeroSection',
   computed: {
-    ucTitle() {
-      return (
-        this.section.title &&
-        this.section.title[0].toUpperCase() + this.section.title.slice(1)
-      );
-    },
+    ...mapState(useAuthStore, ['user']),
   },
-};
+  methods: {
+    ...mapActions(useAuthStore, ['logout'])
+  }
+}
 </script>

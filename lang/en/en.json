@@ -1,7 +1,7 @@
 {
   "auth": {
-    "logout": "Logout",
-    "login": "Login",
+    "logout": "Sign out",
+    "login": "Sign in",
     "register": "Sign up",
     "reset-password": "Reset password",
     "forgot-password": "Forgot password",
@@ -17,8 +17,8 @@
       "didnt-receive": " If you did not receive the email, click the button below to send it again.",
       "success": "Your email has been verified. You can now continue your journey."
     },
-    "already-registered": "Already have an account? Login now.",
-    "remember-password": "Remember your password? Login now."
+    "already-registered": "Already have an account? Sign in now.",
+    "remember-password": "Remember your password? Sign in now."
   },
   "buttons": {
     "login": "Sign in",
@@ -98,16 +98,17 @@
   },
   "nav": {
     "about": "About",
+    "children": "Children",
+    "cities": "Cities",
     "contact": "Contact",
     "dashboard": "Dashboard",
     "home": "Home",
+    "how-it-works": "How it works",
     "login": "Sign in",
-    "schools": "Schools",
-    "cities": "Cities",
-    "parents": "Parents",
-    "children": "Children",
     "logout": "Sign out",
+    "parents": "Parents",
+    "portal": "Portal",
     "register": "Sign up",
-    "portal": "Portal"
+    "schools": "Schools"
   }
 }

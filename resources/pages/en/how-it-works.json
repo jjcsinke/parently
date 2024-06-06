@@ -1,11 +1,11 @@
 {
   "sections": [
     {
-      "type": "HeroSection",
+      "type": "title-section",
         "title": "How It Works"
     },
     {
-      "type": "TabbedSection",
+      "type": "tabbed-section",
       "tabs": [
         {
           "title": "How It Works",
