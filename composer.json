@@ -10,6 +10,12 @@
     "vue"
   ],
   "license": "MIT",
+  "repositories": [
+    {
+      "type": "path",
+        "url": "/Volumes/Dev/modules/*"
+    }
+  ],
   "require": {
     "php": "^8.2",
     "guzzlehttp/guzzle": "^7.2",
@@ -18,7 +24,8 @@
     "laravel/pulse": "^1.2",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.8",
-    "nesbot/carbon": "3.0"
+    "nesbot/carbon": "3.0",
+    "jjcsinke/laravel-cms": "@dev"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9.1",

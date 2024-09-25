@@ -56,6 +56,10 @@ class Controller extends BaseController
             [
                 'route' => 'children',
                 'icon' => 'mdi-human-child'
+            ],
+            [
+                'route' => 'articles',
+                'icon' => 'mdi-note-edit'
             ]
         ];
     }
